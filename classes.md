@@ -25,9 +25,11 @@ templateEngine: [njk, md]
 
 ## Registration process
 
-To register in a class, [please fill out this Google Form](https://docs.google.com/forms/d/e/1FAIpQLSclFVriggvYdFPbGgaSdJ5Zbhrjbx4jXAjyKoebXi2MCwDAXw/viewform?vc=0&c=0&w=1&flr=0){.plausible-event-name=google_form}.
+Classes for fall 2023 are full and in progress. Feel free to check out our offerings below: they're representative of duration, cost, and class size.
 
-All submissions are reviewed by the class coordinator. We'll email you to confirm your spot, and to send instructions for payment. More details, including cancellation policies, are included on the Google Form.
+Keep an eye on our [facebook](https://www.facebook.com/groups/164427301476867/) or [instagram](https://www.instagram.com/devonpottery/?hl=en) accounts to be notified when our winter registration opens, or [email the Guild at devonpottery@gmail.com](mailto:devonpottery@gmail.com) for more information.
+
+<!-- All submissions are reviewed by the class coordinator. We'll email you to confirm your spot, and to send instructions for payment. More details, including cancellation policies, are included on the Google Form. -->
 
 <div id="class-calendar">
 {% import "macros/class.njk" as macros %}
