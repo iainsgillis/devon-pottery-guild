@@ -1,0 +1,8 @@
+# Local Netlify folder
+.netlify
+_site
+_cache
+deno.lock
+.vscode
+.env
+*.zip

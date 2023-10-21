@@ -1,0 +1,40 @@
+:root {
+    --bg: #ffffff;
+    --text: #072241;
+    --accent: #005cb9;
+    --spot-bg: #005cb9;
+    --spot-txt: #fff;
+    --town-of: #005cb9;
+    --devon-ab: #072241;
+    --afa-logo: #0e2954;
+    --afa-text: #b7a78c;
+}
+
+[data-light] {
+    --bg: #ffffff;
+    --text: #072241;
+    --accent: #005cb9;
+    --spot-bg: #005cb9;
+    --spot-txt: #fff;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+    :root {
+        --bg: #072241;
+        --text: #ffffff;
+        --accent: #7ebb00;
+        --spot-bg: #7ebb00;
+        --spot-txt: #072241;
+        --town-of: #9aa2a9;
+        --devon-ab: #ffffff;
+        --afa-logo: #ffffff;
+        --afa-text: #ffffff;
+    }
+}
+
+[data-dark] {
+    --bg: #072241;
+    --text: #ffffff;
+    --accent: #7ebb00;
+}
+

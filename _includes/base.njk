@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devon Pottery Guild</title>
+    <meta name="description" content="{{ page.data.description | default('Homepage of the Devon Pottery Guild') }}">
+    
+    <link rel="stylesheet" href="/main.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/statics/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/statics/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/statics/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <script defer data-domain="devonpotteryguild.com" src="https://plausible.io/js/script.tagged-events.outbound-links.js"></script>
+    <meta name="color-scheme" content="light dark">
+</head>
+
+<body>
+    {% block pagestyles %}{% endblock %}
+
+    {% include "partials/site_head.njk" %}
+
+    <main class="flow">
+
+        {% include "partials/hero.njk" %}
+        {% block lede %}{% endblock %}
+        {% block content %}{% endblock %}
+
+    </main>
+
+    <footer>
+        
+    </footer>
+    {% block js %}{% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+{% extends "base.njk" %}
+
+{% block content %}
+
+{% set futureEvents = events | future %}
+{% set pastEvents = events | past %}
+
+<h3>Upcoming</h3>
+{% if futureEvents | length  %}
+    <ul>{% for event in futureEvents %}
+        <li>{{ event.title }}</li>
+        {% for time in event.times %}
+            <p>{{time.start | date("PPP")}} from {{ time.start | date("p")}} to {{time.end | date("p")}}</p>
+        {% endfor %}
+    {% endfor %}</ul>
+{% else %}
+    <p>Nothing scheduled at this time!</p>
+{% endif %}
+
+{% if pastEvents | length  %}
+    <h3>Past</h3>
+    <ul>{% for event in pastEvents %}
+        <li>
+            {{ event.title }}
+            {% for time in event.times %}
+                <p>{{time.start | date("PPP")}} from {{ time.start | date("p")}} to {{time.end | date("p")}}</p>
+            {% endfor %}
+        </li>
+    {% endfor %}</ul>
+{% endif %}
+
+{% endblock %}

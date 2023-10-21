@@ -1,0 +1,11 @@
+::marker {
+    color: var(--spot-bg);
+}
+
+article :is(ul, ol) {
+    list-style-image: "› ";
+}
+
+article :is(li) {
+    margin-inline-start: 1ch;
+}

@@ -1,0 +1,42 @@
+{% extends "base.njk" %}
+
+{% block pagestyles %}
+<style>
+    :root {
+        --brightness: 0.5;
+        --contrast: 1.2;
+        /* --rotate: 300eg; */
+        --rotate: 180deg;
+        --saturate: 8;
+        /* --spot-bg: #ff234a; */
+        /* --spot-txt: black; */
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+{% include "partials/goodnews.njk" %}
+
+{{ content | md | safe }}
+
+<button style="outline: 1px solid tomato;" id="fetcher">Try fetching</button>
+{% endblock %}
+
+{% block js %}
+<script>
+    const fetchBtn = document.getElementById("fetcher")
+    console.log(fetchBtn)
+    fetchBtn.addEventListener('click', async (event) => {
+        event.preventDefault();
+        const response = await fetch('/.netlify/functions/hello');
+
+        if (!response.ok) {
+            console.error(response);
+            return
+        }
+        const data = await response.json();
+        console.log(data)
+        fetchBtn.innerText = data.message;
+    })
+</script>
+{% endblock %}

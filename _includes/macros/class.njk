@@ -1,0 +1,42 @@
+{% macro classCard(class) %}
+
+<article class="card">
+    <h2>{{ class.title }}</h2>
+    <details>
+        <summary>class description</summary>
+        {{ class.description }}
+    </details>
+
+    {% set startTime = [class.start_date, class.start_time] | join(" ") %}
+    {% set endTime = [class.start_date, class.end_time] | join(" ") %}
+
+
+<dl>
+    <div>
+        <dt>Details</dt>
+        <dd>
+            <span class="keep-together">{{ startTime | date("EEE")}}, {{ startTime | date("haaa")}}–{{ endTime | date("haaa")}}</span>
+             <span class="keep-together">w/ {{ class.instructor }}</span>
+            </dd>
+    </div>
+    <div class="row">
+        <div>
+            <dt>Dates</dt>
+            <dd>{{ class.start_date | date("MMM d") }}–{{ class.end_date | date("MMM d") }}</dd>
+        </div>
+        <div>
+            {%- if class.exceptions -%}
+            <dt>Except</dt>
+            <dd>{{ class.exceptions | date("MMM d") }}</dd>
+            {%- endif -%}
+        </div>
+    </div>
+    <div>
+        <dt>Registration details</dt>
+        {%- set nonmember = [" / $", class.external_price, "<span class='non-member'>(non-member)</span>"] | join if class.external_price else "(members only)" -%}
+        <dd>${{ class.guild_price }} {{nonmember | safe }}<br>max. {{ class.max_participants }} participants</dd>
+    </div>
+</dl>
+</article>
+
+{% endmacro %}

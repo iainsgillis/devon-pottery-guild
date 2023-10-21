@@ -1,0 +1,8 @@
+<h3>{{ instructor.name }}</h3>
+<p>{{ instructor.bio }}</p>
+{% if instructor.instagram %}
+    <a href="https://www.instagram.com/{{ instructor.instagram }}">Instagram</a>
+{% endif %}
+{% if instructor.personal_site %}
+    <a href="{{ instructor.personal_site }}">{{ instructor.name }}'s Personal Site</a>
+{% endif %}
