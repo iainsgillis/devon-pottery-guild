@@ -19,24 +19,7 @@
 
 {{ content | md | safe }}
 
-<button style="outline: 1px solid tomato;" id="fetcher">Try fetching</button>
 {% endblock %}
 
 {% block js %}
-<script>
-    const fetchBtn = document.getElementById("fetcher")
-    console.log(fetchBtn)
-    fetchBtn.addEventListener('click', async (event) => {
-        event.preventDefault();
-        const response = await fetch('/.netlify/functions/hello');
-
-        if (!response.ok) {
-            console.error(response);
-            return
-        }
-        const data = await response.json();
-        console.log(data)
-        fetchBtn.innerText = data.message;
-    })
-</script>
 {% endblock %}

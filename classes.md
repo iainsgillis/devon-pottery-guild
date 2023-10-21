@@ -43,14 +43,16 @@ All submissions are reviewed by the class coordinator. We'll email you to confir
 All classes are held downstairs at the site of Devon's first school, just east of the current Robina Baker School, at:
 
 <div class="address">
-<div>
-    <address itemscope="itemscope" itemtype="http://data-vocabulary.org/Address">
-    <span itemprop="street-address">5 Jasper Court S</span></br>
-    <span itemprop="locality">Devon</span>, <span itemprop="region">AB</span></br>
-    <span itemprop="postal-code">T9G 1H3</span>
-    </address>
+    <div>
+        <address itemscope="itemscope" itemtype="http://data-vocabulary.org/Address">
+        <span itemprop="street-address">5 Jasper Court S</span></br>
+        <span itemprop="locality">Devon</span>, <span itemprop="region">AB</span></br>
+        <span itemprop="postal-code">T9G 1H3</span>
+        </address>
+    </div>
+    <div>
+        <iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=5%20Jasper%20Ct%20S,%20Devon,%20AB,%20T9G%201A2+(Devon%20Pottery%20Guild)&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+    </div>
 </div>
-<div>
-<iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=5%20Jasper%20Ct%20S,%20Devon,%20AB,%20T9G%201A2+(Devon%20Pottery%20Guild)&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.maps.ie/population/">Population calculator map</a></iframe></div>
-</div>
+
 </section>
