@@ -11,15 +11,15 @@ order: 10
 ---
 
 {% block lede %}
-<div class="classes-lede">
-    <img src="/statics/curve.svg" class="curve" inline>
-    <section>
-        Pottery classes are a great way to relieve stress and enhance creativity while
-        learning a new skill! Participants will get a thorough introduction to the craft
-        of pottery making, have fun and interact with others while creating their own
-        ceramic pieces from start to finish.
-    </section>
-    <img src="/statics/curve.svg" class="curve" inline>
+<div class="lede">
+    <img src="/statics/curve.svg" class="curve" inline />
+<p>
+Pottery classes are a great way to relieve stress and enhance creativity while
+learning a new skill! Participants will get a thorough introduction to the craft
+of pottery making, have fun and interact with others while creating their own
+ceramic pieces from start to finish.
+</p>
+    <img src="/statics/curve.svg" class="curve" inline />
 </div>
 {% endblock %}
 
@@ -55,7 +55,7 @@ All classes are held downstairs at the site of Devon's first school, just east o
         </address>
     </div>
     <div>
-        <iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=5%20Jasper%20Ct%20S,%20Devon,%20AB,%20T9G%201A2+(Devon%20Pottery%20Guild)&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+        <iframe title="Google Maps" width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=5%20Jasper%20Ct%20S,%20Devon,%20AB,%20T9G%201A2+(Devon%20Pottery%20Guild)&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
     </div>
 </div>
 
