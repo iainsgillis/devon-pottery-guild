@@ -38,20 +38,18 @@ site.use(postcss());
 site.use(lightningCss());
 site.use(relativeUrls());
 
-// site.use(sourceMaps());
+site.use(sourceMaps());
 site.copy("statics");
 site.copy("fonts");
-site.copy("favicon", (file) => {
-  // console.log("before: ", file)
+site.copy("favicon", (file: string) => {
   if (["/favicon/favicon.ico", "/favicon/site.webmanifest"].includes(file)) {
     file = file.replace("/favicon", "")
   } else {
     file = file.replace("/favicon", "/statics")
   }
-  // console.log("after: ", file)
   return file
 });
-// site.copy("netlify");
+site.copy("netlify");
 
 site.filter("future", filters.getFutureEvents);
 site.filter("past", filters.getPastEvents);
