@@ -1,0 +1,41 @@
+{% set currentPage = page.data.url %}
+
+<style>
+    .you-are-here a {
+        text-decoration-line: underline;
+        text-decoration-color: var(--txt);
+        text-decoration-thickness: 4px;
+    }
+    .cluster > strong {
+        flex-basis: 100%;
+    }
+</style>
+
+<div class="cluster">
+    <strong>© 2023</strong>
+    <div>Devon Pottery Guild{# | <small>(<a href="https://github.com/iainsgillis/devon-pottery-guild">view source</a>)</small>#}</div>
+</div>
+
+<div class="cluster">
+    <strong>navigation</strong>
+    {% set txt = nav.menu().data.menu or nav.menu().data.title %}
+    <div {% if currentPage==nav.menu().data.url %}class="you-are-here" {% endif %}>
+        <a href="{{ nav.menu().data.url | url(true) }}" {% if currentPage==nav.menu().data.url %}{% endif %}>{{ txt }}</a>
+    </div>
+    {% asyncEach item in nav.menu().children | sort(attribute="data.order") %}
+    {% set txt = item.data.menu or item.data.title %}
+    <div {% if currentPage==item.data.url %}class="you-are-here" {% endif %}>
+        <a href="{{ item.data.url | url(true) }}" class="uppercase tracking-wide" {% if currentPage==item.data.url %}{%
+            endif %}>{{ txt }}</a>
+    </div>
+    {% endeach %}
+</div>
+
+<div class="cluster">
+    <strong>social media</strong>
+    {% for platform in social_media %}
+    <div>
+        <a href="{{ platform.url }}" title="{{ platform.alt }}">{{platform.name}}</a>
+    </div>
+    {% endfor %}
+</div>

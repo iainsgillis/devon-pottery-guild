@@ -1,0 +1,47 @@
+{% macro dateAndTime(event) %}
+    {% for time in event.times %}
+    {% if (time.start | date('DATETIME')) == (time.end | date('DATETIME')) %}
+        <p>{{time.start | date("eeee, MMMM d, yyyy")}}</p>
+    {% else %}
+        {% set timespan = time.start | date("h:mmaaa") ~ " to " ~ time.end | date("h:mmaaa") %}
+        <p>{{time.start | date("eeee, MMMM d, yyyy")}} {{ (timespan | replace(" ", "&nbsp;")) | safe }}</p>
+    {% endif %}
+    {% endfor %}
+{% endmacro %}
+
+{% macro dateOnly(event) %}
+    {% set dayOne = event.times[0] %}
+    {% if (event.times | length) == 1 %}
+        <p>{{ dayOne.start | date("MMMM d, yyyy") }}</p>
+    {% else %}
+    {% set dayTwo = event.times[1] %}
+        {% if (dayOne.start | date("MMM")) == (dayTwo.start | date("MMM")) %}
+            <p>{{ (dayOne.start | date("MMMM d")) ~ "–" ~ (dayTwo.start | date("d, yyyy"))}}</p>
+        {% else %}
+            <p>{{ (dayOne.start | date("MMMM d")) ~ "–" ~ (dayTwo.start | date("MMMM d, yyyy"))}}</p>
+        {% endif %}
+    {% endif %}
+{% endmacro %}
+
+{% macro eventCard(event, isPast=true) %}
+{% set isUpcoming = not isPast %}
+<article
+    {% if isPast %}
+    class="card"
+    style="--border: tomato"
+    {% endif %}
+>
+    <h3 class="h2">{{ event.title }}</h3>
+    <div class="flow" style="--flow-space: 1ex">
+        {%- if isUpcoming -%}
+            {{ dateAndTime(event)}}
+        {%- else -%}
+            {{ dateOnly(event) }}
+        {%- endif -%}
+    </div>
+    {% if isUpcoming and event.poster is defined %}
+        <img src="/img/{{ event.poster }}" alt="">
+    {% endif %}
+</article>
+
+{% endmacro %}

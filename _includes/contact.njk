@@ -16,8 +16,12 @@
 
 {% block content %}
 <section class="flow">
-{{ content | md | safe }}
+    {{ content | md | safe }}
+</section>
 
+
+<section class="flow">
+    {% include "partials/socials.njk" %}
 </section>
 
 {% endblock %}

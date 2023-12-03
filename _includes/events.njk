@@ -1,32 +1,74 @@
 {% extends "base.njk" %}
-
+{% block pagestyles %}
+<style>
+    :root {
+        --brightness: 0.5;
+        --contrast: 1.5;
+        /* --rotate: 60deg; */
+        --rotate: 180deg;
+        --saturate: 6;
+        /* --spot-bg: #13b500;
+        --spot-txt: #0a1a08; */
+    }
+</style>
+{% endblock %}
 {% block content %}
+
+{{ content | safe }}
 
 {% set futureEvents = events | future %}
 {% set pastEvents = events | past %}
+{% import "macros/event.njk" as macros %}
 
-<h3>Upcoming</h3>
-{% if futureEvents | length  %}
-    <ul>{% for event in futureEvents %}
-        <li>{{ event.title }}</li>
-        {% for time in event.times %}
-            <p>{{time.start | date("PPP")}} from {{ time.start | date("p")}} to {{time.end | date("p")}}</p>
+<section class="flow">
+    <h2 class="h1">Upcoming</h2>
+    {% if futureEvents | length %}
+    <style>
+        #class-calendar .card {
+            border: none;
+        }
+
+        #class-calendar img {
+            max-height: 75vh;
+            width: auto;
+            object-fit: scale-down;
+            padding-inline: 1vw;
+            padding-block: var(--space-s-l);
+            border-radius: 0px;
+            border: 1px solid tomato;
+        }
+    </style>
+    <div class="upcoming">
+        {% for event in futureEvents %}
+        {{macros.eventCard(event, false)}}
         {% endfor %}
-    {% endfor %}</ul>
-{% else %}
-    <p>Nothing scheduled at this time!</p>
-{% endif %}
+    </div>
 
-{% if pastEvents | length  %}
-    <h3>Past</h3>
-    <ul>{% for event in pastEvents %}
-        <li>
-            {{ event.title }}
-            {% for time in event.times %}
-                <p>{{time.start | date("PPP")}} from {{ time.start | date("p")}} to {{time.end | date("p")}}</p>
-            {% endfor %}
-        </li>
-    {% endfor %}</ul>
-{% endif %}
+    {% else %}
+    <p>Nothing scheduled at this time! Check back later, or <a
+            href="https://www.instagram.com/devonpottery/?hl=en">follow us on Instagram</a> to get notified of upcoming
+        events and class offerings.</p>
+    {% endif %}
+
+</section>
+
+<div style="--fill: var(--spot-text);">
+    <img src="/statics/circle-scatter-haikei.svg" class="circles" inline />
+</div>
+
+<section class="flow">
+    <h2 class="h1">Past</h2>
+    <div id="class-calendar">
+        {% for event in pastEvents %}
+        {# {{macros.eventCard(event)}} #}
+        <div>
+            <h3>{{event.title}}</h3>
+            {{ macros.dateOnly(event) }}
+        </div>
+        {% endfor %}
+    </div>
+
+</section>
+
 
 {% endblock %}
