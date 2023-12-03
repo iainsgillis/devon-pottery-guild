@@ -1,0 +1,48 @@
+- title: 2023 Christmas Show and Sale
+  where: 5 Jasper Court South, Devon, AB
+  poster: 2023_xmas_market.webp
+  times:
+  - start: 2023-11-24T17:30
+    end: 2023-11-24T20:30
+  - start: 2023-11-25T10:00
+    end: 2023-11-25T15:00
+
+- title: Pop-up Pottery Sale
+  times:
+  - start: 2023-07-29T10:00
+    end: 2023-07-29T14:00
+
+- title: 2023 Spring Sale
+  poster: 2023_spring_sale.webp
+  times:
+  - start: 2023-05-06T10:00
+    end: 2023-05-06T17:00
+
+- title: 2022 Christmas Market
+  poster: 2022_xmas_market.webp
+  times:
+  - start: 2022-11-25T17:00
+    end: 2022-11-25T21:00
+  - start: 2022-11-26T10:00
+    end: 2022-11-26T15:00
+
+- title: 2022 Spring Sale
+  poster: 2022_spring_sale.webp
+  times:
+  - start: 2022-04-23T10:00
+    end: 2022-04-23T16:00
+
+- title: 2021 Christmas Show & Sale
+  times:
+  - start: 2021-11-27T10:00
+    end: 2021-11-27T16:00
+
+- title: 2021 Halloween Handbuilding
+  times:
+  - start: 2021-10-30T18:00
+    end: 2021-10-30T21:00
+
+- title: 2021 Halloween Workshop
+  times:
+  - start: 2021-09-22T18:00
+    end: 2021-09-22T21:00
