@@ -8,6 +8,7 @@
     --devon-ab: #072241;
     --afa-logo: #0e2954;
     --afa-text: #b7a78c;
+    --insta: #262626;
 }
 
 [data-light] {
@@ -21,14 +22,15 @@
 @media screen and (prefers-color-scheme: dark) {
     :root {
         --bg: #072241;
-        --text: #ffffff;
-        --accent: #7ebb00;
-        --spot-bg: #7ebb00;
+        --text: #dddddd;
+        --accent: #87a121;
+        --spot-bg: #87a121;
         --spot-txt: #072241;
         --town-of: #9aa2a9;
         --devon-ab: #ffffff;
         --afa-logo: #ffffff;
         --afa-text: #ffffff;
+        --insta: #ffffff;
     }
 }
 

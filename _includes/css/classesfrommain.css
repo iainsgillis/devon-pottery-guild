@@ -2,18 +2,9 @@
     background: var(--spot-bg);
 }
 
-.lede :not(svg) {
+.lede section {
     background-color: transparent;
     color: var(--spot-txt);
-    padding: var(--space-xs);
-    max-width: 1200px;
-    margin: auto;
-    z-index: 1;
-
-    &::selection {
-        background-color: black;
-        color: white
-    }
 }
 
 .curve {
@@ -26,20 +17,16 @@
     transform: rotateX(180deg) rotateY(180deg) translateY(-2px);
 }
 
-.circles g {
-    fill: var(--fill, var(--accent));
-}
-
 #class-calendar {
     max-width: 96vw;
     display: grid;
-    place-items: center start;
+    place-items: top center;
     grid-template-columns: repeat(auto-fit, minmax(clamp(275px, 40vw, 500px), 1fr));
     gap: var(--space-s-m);
 }
 
 .card {
-    border: 2px solid var(--border, var(--spot-bg));
+    border: 2px solid var(--spot-bg);
     height: 100%;
     width: 100%;
     padding: var(--space-xs);
@@ -54,7 +41,7 @@
 
     & ::-webkit-details-marker,
     & ::marker {
-        color: var(--border, var(--spot-bg));
+        color: var(--spot-bg);
     }
 
     & .non-member {
@@ -82,14 +69,10 @@
 
 .row {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr auto;
     gap: var(--space-s);
 }
 
 .keep-together {
     display: inline-block;
-}
-
-img {
-    aspect-ratio: var(--aspect);
 }

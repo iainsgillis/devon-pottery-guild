@@ -1,0 +1,51 @@
+.full-width {
+    position: relative;
+    max-width: unset;
+    & ::marker {
+        color: var(--bg);
+    }
+    
+    & svg {
+        width: 100%;
+    }
+    
+    & div {
+        padding-block: var(--space-s-l);
+        z-index: 1;
+    }
+}
+
+.upcoming article {
+    position: relative;
+    display: grid;
+    gap: 1em;
+    grid-template-areas:
+        "title"
+        "date"
+        "poster";
+
+    & h3 {
+        grid-area: title;
+    }
+
+    & div {
+        grid-area: date;
+    }
+
+    & img {
+        grid-area: poster;
+    }
+
+    & p {
+        line-height: 1.2;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .upcoming article {
+        grid-template-columns: 40% 60%;
+        grid-template-areas:
+            "title title"
+            "date poster";
+    }
+}
