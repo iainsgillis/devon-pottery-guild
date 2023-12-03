@@ -1,0 +1,11 @@
+- name: facebook
+  url: https://www.facebook.com/groups/164427301476867/media
+  wordmark: facebook-wordmark.svg
+  logo: facebook.svg
+  alt: Facebook - Devon Pottery Guild
+
+- name: instagram
+  url: https://www.instagram.com/devonpottery/
+  wordmark: instagram-wordmark.svg
+  logo: instagram.svg
+  alt: Instagram - Devon Pottery Guild
