@@ -29,11 +29,11 @@
     <h2>{{ gallery.title }}</h2>
     <p>{{ gallery.blurb | default("Some member-submitted photos from our " ~ gallery.title)}}</p>
     <div class="gallery">
-        {% for pic in gallery.images %}
+    {% for pic in gallery.images %}
         <img src="{{pic.url}}" alt="" loading="lazy" imagick="avif webp" />
-        {% endfor %}
-    </div>
     {% endfor %}
+    </div>
 </article>
+{% endfor %}
 
 {% endblock %}
