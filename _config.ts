@@ -29,11 +29,6 @@ site.use(picture());
 site.use(imagick({ /* cache: false, */ }));
 site.use(sitemap());
 site.use(source_maps());
-// site.use(tailwindcss({
-//   options: {
-//     plugins: [daisyui],
-//   }
-// }));
 site.use(postcss());
 site.use(lightningCss());
 site.use(relativeUrls());
