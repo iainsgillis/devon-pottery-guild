@@ -8,7 +8,7 @@
     </details>
 
     {% set startTime = [class.start_date, class.start_time] | join(" ") %}
-    {% set endTime = [class.start_date, class.end_time] | join(" ") %}
+    {% set endTime = [class.end_date, class.end_time] | join(" ") %}
 
 
 <dl>
@@ -22,7 +22,7 @@
     <div class="row">
         <div>
             <dt>Dates</dt>
-            <dd>{{ class.start_date | date("MMM d") }}–{{ class.end_date | date("MMM d") }}</dd>
+            <dd>{{ startTime | date("MMM d") }}–{{ endTime | date("MMM d") }}</dd>
         </div>
         <div>
             {%- if class.exceptions -%}
