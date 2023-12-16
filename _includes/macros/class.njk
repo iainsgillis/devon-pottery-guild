@@ -15,9 +15,12 @@
     <div>
         <dt>Details</dt>
         <dd>
-            <span class="keep-together">{{ startTime | date("EEE")}}, {{ startTime | date("haaa")}}–{{ endTime | date("haaa")}}</span>
-             <span class="keep-together">w/ {{ class.instructor }}</span>
-            </dd>
+{% if class.title == 'Compressed Twice/Week Intermediate Enhancement' %}
+<span class="keep-together">{{ class.weekday }}, {{ startTime | date("haaa")}}–{{ endTime | date("haaa")}}</span>
+{% else %}
+<span class="keep-together">{{ startTime | date("EEE")}}, {{ startTime | date("haaa")}}–{{ endTime | date("haaa")}}</span>
+{% endif %}
+<span class="keep-together">w/ {{ class.instructor }}</span></dd>
     </div>
     <div class="row">
         <div>
