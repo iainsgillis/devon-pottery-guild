@@ -27,11 +27,11 @@ ceramic pieces from start to finish.
 
 ## Registration process
 
-Classes for fall 2023 are full and in progress. Feel free to check out our offerings below: they're representative of duration, cost, and class size.
+Winter 2024 classes are just about here! **Registration will open to the general public on <time datetime="2023-12-20">Wednesday, December 20, 2023</time>**.
 
-Keep an eye on our [facebook](https://www.facebook.com/groups/164427301476867/) or [instagram](https://www.instagram.com/devonpottery/?hl=en) accounts to be notified when our winter registration opens, or [email the Guild at devonpottery@gmail.com](mailto:devonpottery@gmail.com) for more information.
+<!-- Keep an eye on our [facebook](https://www.facebook.com/groups/164427301476867/) or [instagram](https://www.instagram.com/devonpottery/?hl=en) accounts to be notified when our winter registration opens, or [email the Guild at devonpottery@gmail.com](mailto:devonpottery@gmail.com) for more information. -->
 
-<!-- All submissions are reviewed by the class coordinator. We'll email you to confirm your spot, and to send instructions for payment. More details, including cancellation policies, are included on the Google Form. -->
+All submissions are reviewed by the class coordinator. We'll email you to confirm your spot, and to send instructions for payment. More details, including cancellation policies, will be included on the Google Form.
 
 <div id="class-calendar">
 {% import "macros/class.njk" as macros %}
