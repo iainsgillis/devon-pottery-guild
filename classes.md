@@ -27,13 +27,42 @@ ceramic pieces from start to finish.
 
 ## Registration process
 
-Winter 2024 classes are just about here! **Registration will open to the general public on <time datetime="2023-12-20">Wednesday, December 20, 2023</time>**.
+Winter 2024 classes are just around the corner! Take a peek at the schedule and offerings below, and
+**[register your interest via this Google Form](https://forms.gle/jX4tzPCVZKd2stwDA)**.
 
 <!-- Keep an eye on our [facebook](https://www.facebook.com/groups/164427301476867/) or [instagram](https://www.instagram.com/devonpottery/?hl=en) accounts to be notified when our winter registration opens, or [email the Guild at devonpottery@gmail.com](mailto:devonpottery@gmail.com) for more information. -->
 
-All submissions are reviewed by the class coordinator. We'll email you to confirm your spot, and to send instructions for payment. More details, including cancellation policies, will be included on the Google Form.
+All submissions are reviewed by the class coordinator. We'll email you to confirm your spot, and to send instructions for payment. More details, including cancellation policies, are included [on the Google Form](https://forms.gle/jX4tzPCVZKd2stwDA).
+
+We're hoping to streamline the registration process in the future.
 
 <div id="class-calendar">
+
+<style>
+    .class-full {
+        background-color: transparent;
+        color: var(--text);
+        rotate: 15deg;
+        transform-origin: 50% 50%;
+        position: absolute;
+        contain: content;
+        inset: 0;
+        z-index: 1;
+        padding: 1rem;
+        display: grid;
+        place-content: center;
+        font-size: 5em;
+        font-weight: 900;
+    }
+    .card {
+        position: relative;
+        contain: content;
+    }
+    .class-full ~ *  {
+        filter: blur(2px) contrast(1.25);
+    }
+</style>
+
 {% import "macros/class.njk" as macros %}
  
 {%- for item in classes -%}

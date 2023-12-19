@@ -1,6 +1,9 @@
 {% macro classCard(class) %}
 
+
 <article class="card">
+{%- if class.is_full == "1" -%}<div class="class-full">Full!</div>{%- endif -%}
+
     <h2>{{ class.title }}</h2>
     <details>
         <summary>class description</summary>
