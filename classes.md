@@ -39,7 +39,7 @@ We're hoping to streamline the registration process in the future.
 <div id="class-calendar">
 
 <style>
-    .class-full {
+    .class-full, .class-cancelled {
         background-color: transparent;
         color: var(--text);
         rotate: 15deg;
@@ -58,14 +58,24 @@ We're hoping to streamline the registration process in the future.
         position: relative;
         contain: content;
     }
-    .class-full ~ *  {
-        filter: blur(2px) contrast(1.25);
+    .class-full ~ *,
+    .class-cancelled ~ *  {
+        filter: blur(2px) contrast(1.25) grayscale(1);
+    }
+    .class-cancelled {
+        font-size: var(--size-5);
+    }
+    .cancelled-reason {
+        font-size: var(--size-2);
+        background-color: inherit;
+        text-align: center;
     }
 </style>
 
 {% import "macros/class.njk" as macros %}
  
 {%- for item in classes -%}
+
 {{ macros.classCard(item) }}
 {%- endfor -%}
 <div>

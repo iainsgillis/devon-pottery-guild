@@ -55,6 +55,7 @@ async function getSheetData(gid: number) {
 }
 
 const classes = await getSheetData(gids.classes);
+classes.sort((a, b) => parseInt(b["spots_left"]) - (parseInt(a["spots_left"])))
 const instructors = await getSheetData(gids.bios)
 const members = await getSheetData(gids.members)
 

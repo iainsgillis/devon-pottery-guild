@@ -2,9 +2,17 @@
 
 
 <article class="card">
-{%- if class.is_full == "1" -%}<div class="class-full">Full!</div>{%- endif -%}
+{%- if (class.spots_left | int) == 0 -%}<div class="class-full">Full!</div>{%- endif -%}
+{%- if (class.spots_left | int) == -1 -%}<div class="class-cancelled">Cancelled!<br><span class="cancelled-reason">due to low enrollment</span></div>{%- endif -%}
 
     <h2>{{ class.title }}</h2>
+    {%- if 0 < (class.spots_left | int) -%}
+        {%- if (class.spots_left | int) == 1 -%}
+        <div>Only 1 spot remaining!</div>
+        {%- else -%}
+        <div>{{class.spots_left}} spots remaining!</div>
+        {%- endif -%}
+    {%- endif -%}
     <details>
         <summary>class description</summary>
         {{ class.description }}
@@ -19,7 +27,7 @@
         <dt>Details</dt>
         <dd>
 {% if class.title == 'Compressed Twice/Week Intermediate Enhancement' %}
-<span class="keep-together">{{ class.weekday }}, {{ startTime | date("haaa")}}–{{ endTime | date("haaa")}}</span>
+<span class="keep-together">Thu, 6pm–9pm &<br>Sat, 9am–12pm</span>
 {% else %}
 <span class="keep-together">{{ startTime | date("EEE")}}, {{ startTime | date("haaa")}}–{{ endTime | date("haaa")}}</span>
 {% endif %}
