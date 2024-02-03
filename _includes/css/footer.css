@@ -1,0 +1,12 @@
+footer {
+
+    & .you-are-here a {
+        text-decoration-line: underline;
+        text-decoration-color: var(--txt);
+        text-decoration-thickness: 4px;
+    }
+
+    & .cluster>strong {
+        flex-basis: 100%;
+    }
+}
