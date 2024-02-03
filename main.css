@@ -8,11 +8,11 @@
 @import "css/home.css";
 @import "css/gallery.css";
 @import "css/footer.css";
+@import "css/social.css";
+@import "css/events.css";
 
 
-
-
-
+/* RESET FOLLOWS */
 *,
 *::before,
 *::after {
@@ -81,7 +81,6 @@ header {
 
 nav ul {
     list-style: none;
-    /* font-size: var(--size--1); */
 }
 
 html, body {    overflow-x: hidden;}
@@ -120,7 +119,7 @@ nav li {
         background-color: transparent;
     }
 
-    li:has([aria-current="page"]) {
+    &:has([aria-current="page"]) {
         background-color: var(--spot-bg, var(--accent));
     }
 
@@ -128,10 +127,6 @@ nav li {
         color: var(--spot-txt);
         text-decoration: none;
     }
-}
-
-.firefox-current {
-    background-color: var(--spot-bg, var(--accent));
 }
 
 

@@ -10,18 +10,6 @@
 </p>
 
 
-
-<style>
-    .social {
-        padding-top: var(--space-l);
-    }
-
-    .social svg {
-        width: 90%;
-        height: 90%;
-    }
-</style>
-
 <div class="social switcher" style="--gap: var(--space-s-m); --basis: 40ch;">
     {% for platform in social_media %}
     <div {% if platform.name=='instagram' -%}style="padding-top: 1em" {%- endif -%}>

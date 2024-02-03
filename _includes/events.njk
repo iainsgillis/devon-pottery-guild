@@ -23,21 +23,7 @@
 <section class="flow">
     <h2 class="h1">Upcoming</h2>
     {% if futureEvents | length %}
-    <style>
-        #class-calendar .card {
-            border: none;
-        }
 
-        #class-calendar img {
-            max-height: 75vh;
-            width: auto;
-            object-fit: scale-down;
-            padding-inline: 1vw;
-            padding-block: var(--space-s-l);
-            border-radius: 0px;
-            border: 1px solid tomato;
-        }
-    </style>
     <div class="upcoming">
         {% for event in futureEvents %}
         {{macros.eventCard(event, false)}}

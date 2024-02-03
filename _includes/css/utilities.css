@@ -1,14 +1,15 @@
 .full-width {
     position: relative;
     max-width: unset;
+
     & ::marker {
         color: var(--bg);
     }
-    
+
     & svg {
         width: 100%;
     }
-    
+
     & div {
         padding-block: var(--space-s-l);
         z-index: 1;
@@ -39,6 +40,11 @@
     & p {
         line-height: 1.2;
     }
+}
+
+.hero h1 {
+    font-size: var(--size-4);
+    color: var(--accent);
 }
 
 @media screen and (min-width: 1024px) {

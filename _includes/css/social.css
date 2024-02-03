@@ -1,0 +1,8 @@
+.social {
+    padding-top: var(--space-l);
+
+    & svg {
+        width: 90%;
+        height: 90%;
+    }
+}
