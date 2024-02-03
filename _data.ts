@@ -1,5 +1,5 @@
 import "https://deno.land/std@0.204.0/dotenv/load.ts";
-import { exists } from "https://deno.land/std/fs/mod.ts";
+import { exists } from "https://deno.land/std@0.208.0/fs/mod.ts";
 import { parse } from "https://deno.land/std@0.208.0/yaml/mod.ts";
 
 
