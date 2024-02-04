@@ -9,13 +9,12 @@
     <strong>navigation</strong>
     {% set txt = nav.menu().data.menu or nav.menu().data.title %}
     <div {% if currentPage==nav.menu().data.url %}class="you-are-here" {% endif %}>
-        <a href="{{ nav.menu().data.url | url(true) }}" {% if currentPage==nav.menu().data.url %}{% endif %}>{{ txt }}</a>
+        <a href="{{ nav.menu().data.url | url }}" {% if currentPage==nav.menu().data.url %}{% endif %}>{{ txt }}</a>
     </div>
     {% asyncEach item in nav.menu().children | sort(attribute="data.order") %}
     {% set txt = item.data.menu or item.data.title %}
     <div {% if currentPage==item.data.url %}class="you-are-here" {% endif %}>
-        <a href="{{ item.data.url | url(true) }}" class="uppercase tracking-wide" {% if currentPage==item.data.url %}{%
-            endif %}>{{ txt }}</a>
+        <a href="{{ item.data.url | url }}" class="uppercase tracking-wide" {% if currentPage==item.data.url %}{% endif %}>{{ txt }}</a>
     </div>
     {% endeach %}
 </div>
