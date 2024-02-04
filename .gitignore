@@ -6,3 +6,4 @@ deno.lock
 .vscode
 .env
 *.zip
+node_modules
