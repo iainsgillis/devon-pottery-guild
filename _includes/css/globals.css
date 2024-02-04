@@ -1,0 +1,143 @@
+* {
+    font-family: "Work Sans", sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: var(--text);
+    background-color: var(--bg);
+}
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+body {
+    font-size: var(--size-1);
+    color: var(--text);
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.1;
+}
+
+h1,
+.h1 {
+    font-size: var(--size-3);
+}
+
+h2,
+.h2 {
+    font-size: var(--size-2);
+}
+
+h3,
+.h3 {
+    font-size: var(--size-1);
+}
+
+p,
+ul,
+ol {
+    max-width: 65ch;
+}
+
+
+::marker {
+    color: var(--spot-bg);
+}
+
+::selection {
+    color: var(--spot-txt);
+    background-color: var(--spot-bg);
+}
+
+main>:is(section, article, aside) {
+    padding: var(--space-s-l)
+}
+
+section,
+article,
+aside {
+    max-width: 1200px;
+    margin: auto
+}
+
+aside {
+    background: transparent;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding-right: 1ex;
+    font-size: var(--size--1);
+    opacity: 0.6;
+
+    & * {
+        background: inherit;
+    }
+}
+
+
+article {
+    & :is(ul, ol) {
+        list-style-type: "› ";
+    }
+
+    & :is(li) {
+        margin-inline-start: 1ch;
+    }
+
+    & :has(.full-width) {
+        max-width: unset;
+        margin-inline: auto;
+        padding: 0;
+
+        &> :not(.full-width) {
+            max-width: 1200px;
+            margin-inline: auto;
+            padding-inline: var(--space-s-l);
+        }
+    }
+}
+
+section {
+    padding: var(--space-xs)
+}
+
+header {
+    padding-inline: var(--space-xs);
+    padding-block: var(--space-s);
+
+    & [title] {
+        font-size: var(--size-3);
+        text-decoration: none;
+        font-weight: bold;
+        color: var(--accent);
+    }
+}
+
+footer {
+    background-color: var(--spot-bg);
+    padding: var(--space-s-l);
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: var(--size--1);
+
+    &>* {
+        flex-grow: 1;
+    }
+
+    & * {
+        color: var(--spot-txt);
+        background-color: inherit;
+    }
+
+    & li {
+        font-size: var(--size--1)
+    }
+}

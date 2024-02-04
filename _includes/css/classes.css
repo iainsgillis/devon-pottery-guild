@@ -1,35 +1,3 @@
-.lede {
-    background: var(--spot-bg);
-}
-
-.lede :not(svg) {
-    background-color: transparent;
-    color: var(--spot-txt);
-    padding: var(--space-xs);
-    max-width: 1200px;
-    margin: auto;
-    z-index: 1;
-
-    &::selection {
-        background-color: black;
-        color: white
-    }
-}
-
-.curve {
-    fill: var(--bg);
-    background: var(--spot-bg);
-}
-
-.curve:nth-of-type(2) {
-    /* --theta: 180deg; */
-    transform: rotateX(180deg) rotateY(180deg) translateY(-2px);
-}
-
-.circles g {
-    fill: var(--fill, var(--accent));
-}
-
 #class-calendar {
     max-width: 96vw;
     display: grid;
@@ -92,4 +60,24 @@
 
 img {
     aspect-ratio: var(--aspect);
+}
+
+
+address {
+    font-style: normal;
+}
+
+.address {
+    max-width: 96vw;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-m);
+}
+
+.address>div:has(address) {
+    flex: 0 0 max-content;
+}
+
+.address>div:has(iframe) {
+    flex: 1 0 300px;
 }

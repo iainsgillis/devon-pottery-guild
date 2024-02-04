@@ -1,0 +1,26 @@
+nav {
+
+    & ul {
+        list-style: none;
+    }
+
+    & li {
+        margin-block: var(--space-3xs);
+        padding-inline: 0.5ch;
+        text-transform: uppercase;
+        font-size: var(--size-0);
+
+        & a {
+            background-color: transparent;
+        }
+
+        &:has([aria-current="page"]) {
+            background-color: var(--spot-bg, var(--accent));
+        }
+
+        & a[aria-current="page"] {
+            color: var(--spot-txt);
+            text-decoration: none;
+        }
+    }
+}
