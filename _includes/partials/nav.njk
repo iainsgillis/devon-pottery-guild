@@ -4,13 +4,13 @@
   <ul class="cluster" style="--justify: flex-end; flex-basis: 250px; flex-shrink: 1; row-gap: var(--space-3xs)">
     {% set txt = nav.menu().data.menu or nav.menu().data.title %}
     <li>
-      <a href="{{ nav.menu().data.url | url(true) }}" class="uppercase tracking-wide" {% if
+      <a href="{{ nav.menu().data.url | url }}" class="uppercase tracking-wide" {% if
         currentPage==nav.menu().data.url %}aria-current="page" {% endif %}>{{ txt }}</a>
     </li>
     {% asyncEach item in nav.menu().children | sort(attribute="data.order") %}
     {% set txt = item.data.menu or item.data.title %}
     <li>
-      <a href="{{ item.data.url | url(true) }}" class="uppercase tracking-wide" {% if currentPage==item.data.url %}aria-current="page" {% endif %}>{{ txt }}</a>
+      <a href="{{ item.data.url | url }}" class="uppercase tracking-wide" {% if currentPage==item.data.url %}aria-current="page" {% endif %}>{{ txt }}</a>
     </li>
     {% endeach %}
   </ul>
