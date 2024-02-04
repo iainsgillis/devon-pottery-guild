@@ -17,7 +17,7 @@
 {% block lede %}
 <div class="lede">
     <img src="/statics/curve.svg" class="curve" inline />
-    {{ page.data.description | md | safe }}
+    <p>{{ page.data.description | md(true) }}</p>
     <img src="/statics/curve.svg" class="curve" inline />
 </div>
 {% endblock %}
@@ -27,7 +27,7 @@
 {% for gallery in galleries %}
 <article>
     <h2>{{ gallery.title }}</h2>
-    <p>{{ gallery.blurb | default("Some member-submitted photos from our " ~ gallery.title)}}</p>
+    <p>{{ gallery.blurb | default("Some member-submitted photos from our " ~ gallery.title )}}</p>
     <div class="gallery">
     {% for pic in gallery.images %}
         <img src="{{pic.url}}" alt="" loading="lazy" transform-images="avif webp" />

@@ -1,6 +1,6 @@
 ---
 title: Gallery
-subtitle: See what we're making
+subtitle: See what we're making.
 menu: Gallery
 layout: gallery.njk
 description: >

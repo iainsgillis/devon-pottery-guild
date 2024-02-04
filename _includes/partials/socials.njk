@@ -1,14 +1,14 @@
 <h2>Social media</h2>
 
-<p>
-    The Devon Pottery Guild maintains a moderate media presence on Facebook and
-    Instagram. Follow us on either platform (or both!) to be notified when we we
-    announce classes, workshops, and events.
-</p>
-<p>
-    Links to the Guild's pages on Facebook and Instagram are below. See you there!
-</p>
+{% set blurb %}
+The Devon Pottery Guild maintains a moderate media presence on Facebook and
+Instagram. Follow us on either platform (or both!) to be notified when we we
+announce classes, workshops, and events.
 
+Big ol' links to the Guild’s pages on Facebook and Instagram are below. See you there!
+{% endset %}
+
+{{ blurb | md | safe }}
 
 <div class="social switcher" style="--gap: var(--space-s-m); --basis: 40ch;">
     {% for platform in social_media %}

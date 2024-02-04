@@ -18,7 +18,9 @@ import sourceMaps from "lume/plugins/source_maps.ts";
 
 import * as filters from "./_filters.ts";
 
-const site = lume({ location: new URL("https://devonpotteryguild.com"), });
+const markdown = { options: {typographer: true}};
+const site = lume({ location: new URL("https://devonpotteryguild.com"), }, { markdown });
+
 
 site.use(nunjucks());
 site.use(date());
