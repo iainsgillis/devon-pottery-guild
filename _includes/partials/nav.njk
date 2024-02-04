@@ -10,8 +10,7 @@
     {% asyncEach item in nav.menu().children | sort(attribute="data.order") %}
     {% set txt = item.data.menu or item.data.title %}
     <li>
-      <a href="{{ item.data.url | url(true) }}" class="uppercase tracking-wide" {% if currentPage==item.data.url
-        %}aria-current="page" {% endif %}>{{ txt }}</a>
+      <a href="{{ item.data.url | url(true) }}" class="uppercase tracking-wide" {% if currentPage==item.data.url %}aria-current="page" {% endif %}>{{ txt }}</a>
     </li>
     {% endeach %}
   </ul>
