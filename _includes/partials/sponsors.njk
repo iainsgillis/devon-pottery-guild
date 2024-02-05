@@ -1,0 +1,14 @@
+<h2>Support</h2>
+
+<p>The Devon Pottery Guild gratefully acknowledges the financial support of the
+Town of Devon, Alberta, and the Alberta Foundation for the Arts.</p>
+
+<div class="sponsors switcher" style="--gap: var(--space-s-m); --basis: 40ch;">
+{% for sponsor in sponsors %}
+    <div>
+        <a href="{{ sponsor.url }}" title="{{ sponsor.alt }} Homepage">
+            <img src="/statics/{{ sponsor.logo }}" alt="{{ sponsor.alt }}" inline>
+        </a>
+    </div>
+{% endfor %}
+</div>

@@ -1,0 +1,13 @@
+<svg viewBox="0 0 900 600" width="0" height="0" xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+    <defs>
+        <clipPath id="blob" clipPathUnits="objectBoundingBox" transform="scale(0.00111 0.00167)">
+
+            <g transform="translate(478.0370320952105 299.3613290433783)">
+                <path
+                d="M239.2 -228.5C297.4 -181 323.2 -90.5 313.9 -9.3C304.6 71.9 260.1 143.8 201.9 200.6C143.8 257.4 71.9 299.2 2.8 296.4C-66.3 293.6 -132.6 246.3 -202.6 189.4C-272.6 132.6 -346.3 66.3 -366.2 -19.9C-386.1 -106.1 -352.1 -212.1 -282.1 -259.6C-212.1 -307.1 -106.1 -296.1 -7.8 -288.3C90.5 -280.5 181 -276 239.2 -228.5"
+                fill="#BB004B"></path>
+            </g>
+        </clipPath>
+    </defs>
+</svg>

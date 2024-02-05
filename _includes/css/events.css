@@ -1,0 +1,16 @@
+#class-calendar {
+
+    & .card {
+        border: none;
+    }
+
+    & img {
+        max-height: 75vh;
+        width: auto;
+        object-fit: scale-down;
+        padding-inline: 1vw;
+        padding-block: var(--space-s-l);
+        border-radius: 0px;
+        border: 1px solid tomato;
+    }
+}

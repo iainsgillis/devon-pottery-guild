@@ -1,0 +1,83 @@
+#class-calendar {
+    max-width: 96vw;
+    display: grid;
+    place-items: center start;
+    grid-template-columns: repeat(auto-fit, minmax(clamp(275px, 40vw, 500px), 1fr));
+    gap: var(--space-s-m);
+}
+
+.card {
+    border: 2px solid var(--border, var(--spot-bg));
+    height: 100%;
+    width: 100%;
+    padding: var(--space-xs);
+    display: flex;
+    flex-direction: column;
+
+    & details {
+        font-size: var(--size-0);
+        margin-block: var(--space-s);
+        padding-inline: var(--space-xs);
+    }
+
+    & ::-webkit-details-marker,
+    & ::marker {
+        color: var(--border, var(--spot-bg));
+    }
+
+    & .non-member {
+        font-size: var(--size--1);
+        padding-inline-start: 0.5ch;
+    }
+
+    & dl {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.2;
+        gap: var(--space-s);
+    }
+
+    & dl>div {
+        align-self: stretch;
+    }
+
+    & dt {
+        text-transform: lowercase;
+        font-variant: small-caps;
+        font-size: var(--size-0);
+    }
+}
+
+.row {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-s);
+}
+
+.keep-together {
+    display: inline-block;
+}
+
+img {
+    aspect-ratio: var(--aspect);
+}
+
+
+address {
+    font-style: normal;
+}
+
+.address {
+    max-width: 96vw;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-m);
+}
+
+.address>div:has(address) {
+    flex: 0 0 max-content;
+}
+
+.address>div:has(iframe) {
+    flex: 1 0 300px;
+}

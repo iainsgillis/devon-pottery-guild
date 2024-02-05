@@ -1,0 +1,56 @@
+{% macro classCard(class) %}
+
+
+<article class="card">
+{%- if (class.spots_left | int) == 0 -%}<div class="class-full">Full!</div>{%- endif -%}
+{%- if (class.spots_left | int) == -1 -%}<div class="class-cancelled">Cancelled!<br><span class="cancelled-reason">due to low enrollment</span></div>{%- endif -%}
+
+    <h2>{{ class.title }}</h2>
+    {%- if 0 < (class.spots_left | int) -%}
+        {%- if (class.spots_left | int) == 1 -%}
+        <div>Only 1 spot remaining!</div>
+        {%- else -%}
+        <div>{{class.spots_left}} spots remaining!</div>
+        {%- endif -%}
+    {%- endif -%}
+    <details>
+        <summary>class description</summary>
+        {{ class.description }}
+    </details>
+
+    {% set startTime = [class.start_date, class.start_time] | join(" ") %}
+    {% set endTime = [class.end_date, class.end_time] | join(" ") %}
+
+
+<dl>
+    <div>
+        <dt>Details</dt>
+        <dd>
+{% if class.title == 'Compressed Twice/Week Intermediate Enhancement' %}
+<span class="keep-together">Thu, 6pm–9pm &<br>Sat, 9am–12pm</span>
+{% else %}
+<span class="keep-together">{{ startTime | date("EEE")}}, {{ startTime | date("haaa")}}–{{ endTime | date("haaa")}}</span>
+{% endif %}
+<span class="keep-together">w/ {{ class.instructor }}</span></dd>
+    </div>
+    <div class="row">
+        <div>
+            <dt>Dates</dt>
+            <dd>{{ startTime | date("MMM d") }}–{{ endTime | date("MMM d") }}</dd>
+        </div>
+        <div>
+            {%- if class.exceptions -%}
+            <dt>Except</dt>
+            <dd>{{ class.exceptions | date("MMM d") }}</dd>
+            {%- endif -%}
+        </div>
+    </div>
+    <div>
+        <dt>Registration details</dt>
+        {%- set nonmember = [" / $", class.external_price, "<span class='non-member'>(non-member)</span>"] | join if class.external_price else "(members only)" -%}
+        <dd>${{ class.guild_price }} {{nonmember | safe }}<br>max. {{ class.max_participants }} participants</dd>
+    </div>
+</dl>
+</article>
+
+{% endmacro %}

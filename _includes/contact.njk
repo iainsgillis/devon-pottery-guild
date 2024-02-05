@@ -1,0 +1,27 @@
+{% extends "base.njk" %}
+
+{% block pagestyles %}
+<style>
+    :root {
+        --brightness: 0.8;
+        --contrast: 1.5;
+        /* --rotate: 60deg; */
+        --rotate: 180deg;
+        --saturate: 6;
+        /* --spot-bg: #13b500;
+        --spot-txt: #0a1a08; */
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="flow">
+    {{ content | md | safe }}
+</section>
+
+
+<section class="flow">
+    {% include "partials/socials.njk" %}
+</section>
+
+{% endblock %}

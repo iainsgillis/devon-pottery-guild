@@ -1,0 +1,33 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: statics
+
+collections:
+  - label: Posts
+    name: posts
+    description: List of posts
+    folder: posts
+    extension: md
+    create: true
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: Content
+        name: body
+        widget: markdown
+  - label: Notes
+    name: notes
+    description: List of notes
+    folder: notes
+    extension: md
+    create: true
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: Content
+        name: body
+        widget: markdown

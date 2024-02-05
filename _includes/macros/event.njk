@@ -1,0 +1,65 @@
+{% macro dateAndTime(event) %}
+{% for time in event.times %}
+{% if (time.start | date('DATETIME')) == (time.end | date('DATETIME')) %}
+<p>{{time.start | date("eeee, MMMM d, yyyy")}}</p>
+{% else %}
+{% set timespan = time.start | date("h:mmaaa") ~ " to " ~ time.end | date("h:mmaaa") %}
+<p>{{time.start | date("eeee, MMMM d, yyyy")}} {{ (timespan | replace(" ", "&nbsp;")) | safe }}</p>
+{% endif %}
+{% endfor %}
+{% endmacro %}
+
+{% macro dateOnly(event) %}
+{% set dayOne = event.times[0] %}
+{% if (event.times | length) == 1 %}
+<p>{{ dayOne.start | date("MMMM d, yyyy") }}</p>
+{% else %}
+{% set dayTwo = event.times[1] %}
+{% if (dayOne.start | date("MMM")) == (dayTwo.start | date("MMM")) %}
+<p>{{ (dayOne.start | date("MMMM d")) ~ "–" ~ (dayTwo.start | date("d, yyyy"))}}</p>
+{% else %}
+<p>{{ (dayOne.start | date("MMMM d")) ~ "–" ~ (dayTwo.start | date("MMMM d, yyyy"))}}</p>
+{% endif %}
+{% endif %}
+{% endmacro %}
+
+{% macro eventCard(event, isPast=true) %}
+{% set isUpcoming = not isPast %}
+<article {% if isPast %} class="card" style="--border: tomato" {% endif %}>
+    <h3 class="h2">{{ event.title }}</h3>
+    <div class="flow" style="--flow-space: 1ex">
+        {%- if isUpcoming -%}
+        {{ dateAndTime(event)}}
+        {%- else -%}
+        {{ dateOnly(event) }}
+        {%- endif -%}
+    </div>
+    {% if isUpcoming and event.poster is defined %}
+    <img src="/img/{{ event.poster }}" alt="">
+    {% endif %}
+    {% if isUpcoming and "AGM" in event.title %}
+    <style>
+        .upcoming article {
+            grid-template-columns: 100%;
+        }
+    </style>
+    <div class="flow">
+        <p><strong>{{ dateAndTime(event)}}</strong></p>
+        <p>The AGM is held annually in January for the purposes of presenting the Guild's year-end financial statements,
+            a President's report on the preceding year's activities, and the election of the Executive Committee for the
+            upcoming year.</p>
+        <p>All members are encouraged to attend the AGM.</p>
+        <p>Matters discussed at general meetings shall be decided by a majority vote with each member present at the
+            meeting having one vote.</p>
+            <div class="cluster" style="flex-basis: 500px; flex-shrink: 1; row-gap: var(--space-3xs)">
+                <strong>Add to calendar:</strong>
+                <div><a href="https://calndr.link/e/HR6BNYWxWJ?s=apple" target="_blank">Apple</a></div>
+                <div><a href="https://calndr.link/e/HR6BNYWxWJ?s=google" target="_blank">Google</a></div>
+                <div><a href="https://calndr.link/e/HR6BNYWxWJ?s=office365" target="_blank">Office 365</a></div>
+            </div>
+    </div>
+
+    {% endif %}
+</article>
+
+{% endmacro %}

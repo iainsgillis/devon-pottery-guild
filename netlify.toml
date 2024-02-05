@@ -1,0 +1,18 @@
+[build]
+  publish = "_site"
+  command = """
+    curl -fsSL https://deno.land/x/install/install.sh | sh && \
+    /opt/buildhome/.deno/bin/deno task build \
+  """
+
+[dev]
+  command = "deno task serve --location http://192.168.1.10:3000"
+  targetPort = 3000
+  port = 8888
+  publish = "_site"
+
+  [[dev.pollingStrategies]]
+    name = "TCP"
+
+  [[dev.pollingStrategies]]
+    name = "HTTP"

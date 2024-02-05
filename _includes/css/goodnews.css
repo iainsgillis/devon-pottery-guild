@@ -1,0 +1,24 @@
+#class-poster {
+    display: grid;
+    gap: 1em;
+    grid-template-rows: auto 1fr auto;
+    z-index: 10;
+
+    & h2>span {
+        font-size: var(--size-1);
+        font-weight: normal;
+    }
+
+    & div,
+    & a {
+        background-color: transparent;
+    }
+
+    & img {
+        box-shadow: 2px 2px 5px 3px gray;
+        border: 1px solid var(--text);
+        max-height: 100vh;
+        margin: auto;
+        width: 100%;
+    }
+}

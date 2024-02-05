@@ -1,0 +1,60 @@
+{% extends "base.njk" %}
+{% block pagestyles %}
+<style>
+    :root {
+        --brightness: 0.5;
+        --contrast: 1.5;
+        /* --rotate: 60deg; */
+        --rotate: 180deg;
+        --saturate: 6;
+        /* --spot-bg: #13b500;
+        --spot-txt: #0a1a08; */
+    }
+</style>
+{% endblock %}
+{% block content %}
+
+{{ content | safe }}
+
+{% set futureEvents = events | future %}
+{% set pastEvents = events | past %}
+{% import "macros/event.njk" as macros %}
+
+<section class="flow">
+    <h2 class="h1">Upcoming</h2>
+    {% if futureEvents | length %}
+
+    <div class="upcoming">
+        {% for event in futureEvents %}
+        {{macros.eventCard(event, false)}}
+        {% endfor %}
+    </div>
+
+    {% else %}
+    <p>Nothing scheduled at this time! Check back later, or <a
+            href="https://www.instagram.com/devonpottery/?hl=en">follow us on Instagram</a> to get notified of upcoming
+        events and class offerings.</p>
+    {% endif %}
+
+</section>
+
+<div style="--fill: var(--spot-text);">
+    <img src="/statics/circle-scatter-haikei.svg" class="circles" inline />
+</div>
+
+<section class="flow">
+    <h2 class="h1">Past</h2>
+    <div id="class-calendar">
+        {% for event in pastEvents %}
+        {# {{macros.eventCard(event)}} #}
+        <div>
+            <h3>{{event.title}}</h3>
+            {{ macros.dateOnly(event) }}
+        </div>
+        {% endfor %}
+    </div>
+
+</section>
+
+
+{% endblock %}

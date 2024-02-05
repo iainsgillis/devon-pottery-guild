@@ -1,0 +1,34 @@
+{% extends "base.njk" %}
+
+{% block pagestyles %}
+<style>
+:root {
+    --brightness: 1.1;
+    --contrast: 2;
+    --rotate: 180deg;
+    --saturate: 8;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+{% for item in home.sections %}
+<article class="flow">
+    <h2>{{ item.title }}</h2>
+    {{ item.content | md | safe }}
+    {% if item.lede is defined %}
+        <div class="lede full-width">
+            <img src="/statics/curve.svg" class="curve" inline />
+            <div>{{ item.lede | md | safe }}</div>
+            <img src="/statics/curve.svg" class="curve" inline />
+        </div>
+    {% endif %}
+</article>
+{% endfor %}
+
+<article class="flow">
+    {% include "partials/sponsors.njk" %}
+</article>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+.hero {
+    display: grid;
+    grid-template-areas: "stack";
+    place-items: center left;
+    height: var(--hero-ideal-height);
+    max-height: var(--hero-max-height);
+    margin-bottom: var(--space-s-l);
+    position: relative;
+
+    &>* {
+        grid-area: stack;
+        z-index: 10;
+    }
+
+    & h1 {
+        font-size: var(--size-4);
+        color: var(--accent);
+    }
+
+    & div {
+
+        color: var(--bg);
+        opacity: 0.96;
+        max-width: 96vw;
+        box-shadow: 0 0 4px 0 var(--accent);
+        position: absolute;
+        bottom: var(--space-m);
+
+        & * {
+            padding-inline: var(--space-s-l) var(--space-s);
+            font-weight: bold;
+            background-color: transparent;
+        }
+
+        & *:first-child {
+            padding-block-start: var(--space-s);
+        }
+
+        & *:last-child {
+            padding-block-end: var(--space-s);
+        }
+
+    }
+}
+
+#hero {
+    width: 100%;
+    height: min(var(--hero-ideal-height), var(--hero-max-height));
+    object-fit: cover;
+    z-index: 1;
+}

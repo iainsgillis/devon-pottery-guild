@@ -1,0 +1,8 @@
+<div class="hero">
+    <img id="hero" class="dynamic-filter" src="/img/{{page.data.hero}}" alt="" style="--aspect: {{ page.data.aspectRatio }}">
+    <div>
+        <h1>{{ title | md(true) }}</h1>
+        <p>{{ subtitle | md(true) }}</p>
+    </div>
+    <aside><small>{{ page.data.attribution | safe }}</small></aside>
+</div>

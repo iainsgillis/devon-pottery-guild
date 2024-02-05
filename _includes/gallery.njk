@@ -1,0 +1,39 @@
+{% extends "base.njk" %}
+{% block pagestyles %}
+<style>
+    :root {
+        --brightness: 0.5;
+        --contrast: 1.5;
+        /* --rotate: 60deg; */
+        --rotate: 180deg;
+        --saturate: 6;
+        /* --spot-bg: #13b500;
+        --spot-txt: #0a1a08; */
+    }
+</style>
+
+{% endblock %}
+
+{% block lede %}
+<div class="lede">
+    <img src="/statics/curve.svg" class="curve" inline />
+    <p>{{ page.data.description | md(true) }}</p>
+    <img src="/statics/curve.svg" class="curve" inline />
+</div>
+{% endblock %}
+
+{% block content %}
+
+{% for gallery in galleries %}
+<article>
+    <h2>{{ gallery.title }}</h2>
+    <p>{{ gallery.blurb | default("Some member-submitted photos from our " ~ gallery.title )}}</p>
+    <div class="gallery">
+    {% for pic in gallery.images %}
+        <img src="{{pic.url}}" alt="" loading="lazy" transform-images="avif webp" />
+    {% endfor %}
+    </div>
+</article>
+{% endfor %}
+
+{% endblock %}
