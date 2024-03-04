@@ -48,6 +48,13 @@
         <dt>Registration details</dt>
         {%- set nonmember = [" / $", class.external_price, "<span class='non-member'>(non-member)</span>"] | join if class.external_price else "(members only)" -%}
         <dd>${{ class.guild_price }} {{nonmember | safe }}<br>max. {{ class.max_participants }} participants</dd>
+        {% if class.form_url and (class.spots_left | int) != 0 %}
+        <details>
+            <summary>Show Registration Form</summary>
+            <iframe src="{{ class.form_url }}" allowfullscreen>Loading…</iframe>
+        </details>
+        {% endif %}
+    
     </div>
 </dl>
 </article>
