@@ -25,9 +25,21 @@ ceramic pieces from start to finish.
 
 <section class="flow">
 
+<style>blockquote {font-size: smaller; padding-left: 1ch; border-left: 1ch solid var(--accent)}</style>
+
 ## Registration process
 
-**Winter 2024 classes are full and in full swing!**
+If a class is open to registration (whether there are spots available, or a waitlist),
+you'll find a toggle to show the registration form in the card for a corresponding class below.
+
+> Note: As of March 2024, we're trying a bit of a modification to our existing registration process.
+There might be some kinks, and we appreciate your understanding as we try to streamline our processes
+and shorten our feedback time to our members and students, without introducing new vendors and additional
+costs to the Guild.
+
+### Update: March 4, 2024
+
+**Calling intermediate potters!** On short notice, we have a handful of spots available for our **2024-03 Compressed Intermediate Enhancement Class**, running for 10 classes over 5 weeks. Details below. Don't delay!
 
 Keep an eye on our [facebook](https://www.facebook.com/groups/164427301476867/) or [instagram](https://www.instagram.com/devonpottery/?hl=en) accounts to be notified when our spring registration opens, or [email the Guild at devonpottery@gmail.com](mailto:devonpottery@gmail.com) for more information.
 
@@ -81,7 +93,7 @@ Keep an eye on our [facebook](https://www.facebook.com/groups/164427301476867/) 
 
 {{ macros.classCard(item) }}
 {%- endfor -%}
-<div>
+</div>
 </section>
 
 <section class="flow">
