@@ -41,7 +41,7 @@ Keep an eye on our [facebook](https://www.facebook.com/groups/164427301476867/) 
         transform-origin: 50% 50%;
         position: absolute;
         contain: content;
-        inset: 0;
+        top: 10rem;
         z-index: 1;
         padding: 1rem;
         display: grid;
@@ -52,18 +52,26 @@ Keep an eye on our [facebook](https://www.facebook.com/groups/164427301476867/) 
     .card {
         position: relative;
         contain: content;
+        outline: 1px dotted var(--accent);
     }
     .class-full ~ *,
     .class-cancelled ~ *  {
-        filter: blur(2px) contrast(1.25) grayscale(1);
+        filter: blur(1px) grayscale(1);
     }
     .class-cancelled {
-        font-size: var(--size-5);
+        font-size: var(--size-4);
     }
     .cancelled-reason {
-        font-size: var(--size-2);
+        font-size: var(--size-1);
         background-color: inherit;
         text-align: center;
+    }
+    iframe {
+        width: 100%;
+        min-height: 500px;
+    }
+    details {
+        cursor: pointer;
     }
 </style>
 
