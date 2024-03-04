@@ -19,11 +19,17 @@
     <div>
         <dt>Details</dt>
         <dd>
-{% if class.title == 'Compressed Twice/Week Intermediate Enhancement' %}
-<span class="keep-together">Thu, 6pm–9pm &<br>Sat, 9am–12pm</span>
+{% if "/" in class.weekday %}
+    {% if "Wed" in class.weekday %}
+        {% set weeknight = "Wed" %}
+    {% elif "Thu" in class.weekday %}
+        {% set weeknight = "Thu" %}
+    {% endif %}
+<span class="keep-together">{{ weeknight }}, 6pm–9pm &<br>Sat, 9am–12pm</span>
 {% else %}
 <span class="keep-together">{{ startTime | date("EEE")}}, {{ startTime | date("haaa")}}–{{ endTime | date("haaa")}}</span>
 {% endif %}
+
 <span class="keep-together">w/ {{ class.instructor }}</span></dd>
     </div>
     <div class="row">
