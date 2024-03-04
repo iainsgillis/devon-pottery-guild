@@ -6,13 +6,6 @@
 {%- if (class.spots_left | int) == -1 -%}<div class="class-cancelled">Cancelled!<br><span class="cancelled-reason">due to low enrollment</span></div>{%- endif -%}
 
     <h2>{{ class.title }}</h2>
-    {%- if 0 < (class.spots_left | int) -%}
-        {%- if (class.spots_left | int) == 1 -%}
-        <div>Only 1 spot remaining!</div>
-        {%- else -%}
-        <div>{{class.spots_left}} spots remaining!</div>
-        {%- endif -%}
-    {%- endif -%}
     <details>
         <summary>class description</summary>
         {{ class.description }}
