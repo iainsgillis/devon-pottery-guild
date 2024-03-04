@@ -37,12 +37,12 @@
             <dt>Dates</dt>
             <dd>{{ startTime | date("MMM d") }}–{{ endTime | date("MMM d") }}</dd>
         </div>
+        {%- if class.exceptions -%}
         <div>
-            {%- if class.exceptions -%}
             <dt>Except</dt>
             <dd>{{ class.exceptions | date("MMM d") }}</dd>
-            {%- endif -%}
         </div>
+        {%- endif -%}
     </div>
     <div>
         <dt>Registration details</dt>
