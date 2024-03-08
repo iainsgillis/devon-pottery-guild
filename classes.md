@@ -37,9 +37,11 @@ There might be some kinks, and we appreciate your understanding as we try to str
 and shorten our feedback time to our members and students, without introducing new vendors and additional
 costs to the Guild.
 
-### Update: March 4, 2024
+### Update: March 7, 2024
 
-**Calling intermediate potters!** On short notice, we have a handful of spots available for our **2024-03 Compressed Intermediate Enhancement Class**, running for 10 classes over 5 weeks. Details below. Don't delay!
+Our 2024-03 Compressed Intermediate Enhancement Class is now underway and closed to further registrations.
+
+We're ironing out the details of some spring 2024 beginner classes.
 
 Keep an eye on our [facebook](https://www.facebook.com/groups/164427301476867/) or [instagram](https://www.instagram.com/devonpottery/?hl=en) accounts to be notified when our spring registration opens, or [email the Guild at devonpottery@gmail.com](mailto:devonpottery@gmail.com) for more information.
 
