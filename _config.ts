@@ -40,12 +40,13 @@ site.use(sourceMaps());
 site.copy("statics");
 site.copy("fonts");
 site.copy("favicon", (file: string) => {
+  let adjusted_file: string;
   if (["/favicon/favicon.ico", "/favicon/site.webmanifest"].includes(file)) {
-    file = file.replace("/favicon", "")
+    adjusted_file = file.replace("/favicon", "")
   } else {
-    file = file.replace("/favicon", "/statics")
+    adjusted_file = file.replace("/favicon", "/statics")
   }
-  return file
+  return adjusted_file;
 });
 site.copy("netlify");
 
