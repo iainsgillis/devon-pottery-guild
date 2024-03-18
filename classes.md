@@ -48,37 +48,24 @@ Keep an eye on our [facebook](https://www.facebook.com/groups/164427301476867/) 
 <div id="class-calendar">
 
 <style>
-    .class-full, .class-cancelled {
-        background-color: transparent;
-        color: var(--text);
-        rotate: 15deg;
-        transform-origin: 50% 50%;
-        position: absolute;
-        contain: content;
-        top: 10rem;
-        z-index: 1;
-        padding: 1rem;
-        display: grid;
-        place-content: center;
-        font-size: 5em;
-        font-weight: 900;
+    .class-full, .class-cancelled, .class-inprogress {
+        background-color: var(--accent);
+        color: var(--bg);
+        text-transform: uppercase;
+        font-size: var(--size-0);
+        padding-inline: 0.5ex;
+        vertical-align: 25%;
     }
     .card {
         position: relative;
         contain: content;
         outline: 1px dotted var(--accent);
+        & ::marker {
+            color: var(--spot-bg);
+        }
     }
-    .class-full ~ *,
-    .class-cancelled ~ *  {
-        filter: blur(1px) grayscale(1);
-    }
-    .class-cancelled {
-        font-size: var(--size-4);
-    }
-    .cancelled-reason {
-        font-size: var(--size-1);
-        background-color: inherit;
-        text-align: center;
+    .card:has(.class-cancelled) {
+        display: none;
     }
     iframe {
         width: 100%;
@@ -91,7 +78,7 @@ Keep an eye on our [facebook](https://www.facebook.com/groups/164427301476867/) 
 
 {% import "macros/class.njk" as macros %}
  
-{%- for item in classes -%}
+{%- for item in classes | running -%}
 
 {{ macros.classCard(item) }}
 {%- endfor -%}
