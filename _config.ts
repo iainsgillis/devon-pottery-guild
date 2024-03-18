@@ -52,6 +52,7 @@ site.copy("netlify");
 
 site.filter("future", filters.getFutureEvents);
 site.filter("past", filters.getPastEvents);
+site.filter("running", filters.getRunningClasses);
 site.use(minify_html());
 
 export default site;
