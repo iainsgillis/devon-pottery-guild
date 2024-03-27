@@ -16,3 +16,12 @@
 
   [[dev.pollingStrategies]]
     name = "HTTP"
+
+[[headers]]
+  for = "/cal*"
+  [headers.values]
+  X-Robots-Tag = "noindex"
+
+[[redirects]]
+  from = "/cal"
+  to = "/calendar"
