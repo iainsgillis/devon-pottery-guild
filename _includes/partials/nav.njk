@@ -1,17 +1,19 @@
 {% set currentPage = page.data.url %}
-
+{% set menu = nav.menu("/", "private!=true") %}
 <nav>
   <ul class="cluster" style="--justify: flex-end; flex-basis: 250px; flex-shrink: 1; row-gap: var(--space-3xs)">
-    {% set txt = nav.menu().data.menu or nav.menu().data.title %}
+    {% set txt = menu.data.menu or menu.data.title %}
     <li>
-      <a href="{{ nav.menu().data.url | url }}" class="uppercase tracking-wide" {% if
-        currentPage==nav.menu().data.url %}aria-current="page" {% endif %}>{{ txt }}</a>
+      <a href="{{ menu.data.url | url }}" class="uppercase tracking-wide" {% if currentPage==menu.data.url
+        %}aria-current="page" {% endif %}>{{ txt }}</a>
     </li>
-    {% asyncEach item in nav.menu().children | sort(attribute="data.order") %}
+    {% asyncEach item in menu.children | sort(attribute="data.order")%}
     {% set txt = item.data.menu or item.data.title %}
     <li>
-      <a href="{{ item.data.url | url }}" class="uppercase tracking-wide" {% if currentPage==item.data.url %}aria-current="page" {% endif %}>{{ txt }}</a>
+      <a href="{{ item.data.url | url }}" class="uppercase tracking-wide" {% if currentPage==item.data.url
+        %}aria-current="page" {% endif %}>{{ txt }}</a>
     </li>
+
     {% endeach %}
   </ul>
 </nav>

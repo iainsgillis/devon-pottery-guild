@@ -1,3 +1,7 @@
+---
+private: true
+---
+
 <style>
   html, body {
     height: 100%;

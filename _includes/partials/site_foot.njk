@@ -1,5 +1,5 @@
 {% set currentPage = page.data.url %}
-
+{% set menu = nav.menu("/", "private!=true") %}
 <div class="cluster">
     <strong>© 2024</strong>
     <div>Devon Pottery Guild | <small>(<a href="https://github.com/iainsgillis/devon-pottery-guild">view source</a>)</small></div>
@@ -7,11 +7,11 @@
 
 <div class="cluster">
     <strong>navigation</strong>
-    {% set txt = nav.menu().data.menu or nav.menu().data.title %}
-    <div {% if currentPage==nav.menu().data.url %}class="you-are-here" {% endif %}>
-        <a href="{{ nav.menu().data.url | url }}" {% if currentPage==nav.menu().data.url %}{% endif %}>{{ txt }}</a>
+    {% set txt = menu.data.menu or menu.data.title %}
+    <div {% if currentPage==menu.data.url %}class="you-are-here" {% endif %}>
+        <a href="{{ menu.data.url | url }}" {% if currentPage==menu.data.url %}{% endif %}>{{ txt }}</a>
     </div>
-    {% asyncEach item in nav.menu().children | sort(attribute="data.order") %}
+    {% asyncEach item in menu.children | sort(attribute="data.order") %}
     {% set txt = item.data.menu or item.data.title %}
     <div {% if currentPage==item.data.url %}class="you-are-here" {% endif %}>
         <a href="{{ item.data.url | url }}" class="uppercase tracking-wide" {% if currentPage==item.data.url %}{% endif %}>{{ txt }}</a>
