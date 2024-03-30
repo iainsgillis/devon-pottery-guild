@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "partials/head.njk" %}
+
+<body>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        iframe {
+            display: block;
+            height: 75dvh;
+            width: 100%;
+            margin: auto;
+        }
+        @media screen and (prefers-color-scheme: dark) {
+            iframe {
+                filter: hue-rotate(180deg) invert(0.85)
+            }
+        }
+        ol {
+            list-style-type: none;
+        }
+        li {
+            padding-left: var(--pl, 10px);
+            border-left: var(--bl, 5px) solid var(--border, var(--bg));
+       }
+       .whichClass {
+            font-size: var(--size--2);
+       }
+       .past {
+            --border: var(--text);
+            opacity: 0.75;
+       }
+       .future {
+            --border: var(--contrast);
+       }
+       .present {
+            font-weight: bold;
+            --border: var(--accent);
+            --bl: 10px;
+       }
+        #faq {
+            line-height: 1.2;
+            --flow-space: var(--space-xl);
+            & dt {
+                color: var(--accent);
+            }
+            & dd {
+                font-weight: bold;
+                font-size: var(--size-3);
+                --flow-space: 200px;
+            }
+            & *::before {
+                font-size: var(--size-0);
+                font-weight: initial;
+                color: var(--accent)
+            }
+            /* & dt::before {
+                content: "Q. ";
+            }
+            & dd::before {
+                content: "A. ";
+            } */
+        }
+    </style>
+    {% include "partials/site_head.njk" %}
+    <main class="flow">
+        <header>
+            <h1>{{ title | md(true) | safe }}</h1>
+        </header>
+        <section class="flow">
+            <h2>FAQ</h2>
+            <div id="faq"></div>
+        </section>
+        <img src="/statics/circle-scatter-haikei.svg" class="circles" inline />
+        <section class="flow">
+            <h2>Partial List of Bookings</h2>
+            <p style="text-wrap: balance;"><small>This covers yesterday and the next week. See the <a href="#fullCalendar">full calendar below</a> if you need more information.</small></p>
+            <div id="bookings"></div>
+        </section>
+        <img src="/statics/circle-scatter-haikei.svg" class="circles" inline />
+        <section class="flow">
+            <h2 id="fullCalendar">Full Google Calendar</h2>
+            
+            <iframe
+                src="https://calendar.google.com/calendar/u/0/embed?src=devonpottery@gmail.com&ctz=America/Edmonton&title=DPG%20Classes&wkst=1&showTabs=0&mode=WEEK&showCalendars=0&showPrint=0"
+                frameborder="0"></iframe>
+                <p><small>Add to your own Google Calendar using the button in the bottom-right of the display.</small></p>
+                <p><small><a id="ics" href="webcal://calendar.google.com/calendar/ical/devonpottery%40gmail.com/public/basic.ics">Or use this link</a> to subscribe using your default calendar application (e.g., iOS).</small></p>
+                <div><small><button onclick="copyText('#ics', 'href')">📋 copy ICS link to clipboard</button></small></div>
+        </section>
+
+
+
+        <footer class="switcher">
+            {% include "partials/site_foot.njk" %}
+        </footer>
+    </main>
+    <script src="https://unpkg.com/dayjs@1.11.10/dayjs.min.js"></script>
+    <script src="https://unpkg.com/dayjs@1.11.10/plugin/relativeTime.js"></script>
+    <script src="https://unpkg.com/dayjs@1.11.10/plugin/calendar.js"></script>
+    <script src="https://unpkg.com/dayjs@1.11.10/plugin/isBetween.js"></script>
+    <script>
+        dayjs.extend(window.dayjs_plugin_relativeTime);
+        dayjs.extend(window.dayjs_plugin_calendar);
+        dayjs.extend(window.dayjs_plugin_isBetween);
+
+        const now = dayjs();
+        const startDate = now.subtract(1, 'd').format("YYYY-MM-DD")
+        const endDate = now.add(1, 'w').format("YYYY-MM-DD")
+
+        const periodValue = `${startDate}-${endDate}`
+        let shouldFetch = false;
+        if (Object.is(localStorage.getItem("@dpg/events"), null) || Object.is(localStorage.getItem("@dpg/period"), null) || (localStorage.getItem("@dpg/period") < periodValue)) {
+            localStorage.setItem("@dpg/period", periodValue)
+            shouldFetch = true;
+        }
+
+        if (shouldFetch) {
+            console.info("updating calendar data")
+            const url = `https://clients6.google.com/calendar/v3/calendars/devonpottery@gmail.com/events?calendarId=devonpottery%40gmail.com&singleEvents=true&eventTypes=default&eventTypes=focusTime&eventTypes=outOfOffice&timeZone=America%2FEdmonton&maxAttendees=1&maxResults=250&sanitizeHtml=true&timeMin=${startDate}T00%3A00%3A00-06%3A00&timeMax=${endDate}T00%3A00%3A00-06%3A00&key=AIzaSyAwBtjzb2Gy0OC1eNBSRPVkJLMfhipHi5c`
+            fetch(url)
+                .then(r => r.json())
+                .then(j => {
+                    const events = j.items.map(el => ({ title: el.summary, start: el.start.dateTime, end: el.end.dateTime }));
+                    events.sort((a, b) => a.start < b.start ? -1 : 1);
+                    localStorage.setItem("@dpg/events", JSON.stringify(events));
+                    updateDom(events)
+                })
+                .catch(err => console.error(err))
+        } else {
+            console.info("loading calendar data from localStorage")
+            const events = JSON.parse(localStorage.getItem("@dpg/events"));
+            updateDom(events);
+        }
+
+
+        function updateDom(data) {
+            const classOnNow = data.some(el => now.isBetween(dayjs(el.start), dayjs(el.end)));
+            const currentClass = data.find(el => now.isBetween(dayjs(el.start), dayjs(el.end)));
+            const nextClass = data.find(el => now.isBefore(dayjs(el.start)));
+            const studioNextAvailable = dayjs(currentClass?.end).fromNow() || now;
+            const list = data.map(ev => {
+                const evStart = dayjs(ev.start)
+                const diff = evStart.diff(dayjs(), "d")
+                const cls = diff < 0 ? "past" : diff === 0 ? "present" : "future";
+                return `
+                <li class="${cls}" style="--flow-space: 1em">
+                    <h2><time datetime="${ev.start}">${evStart.format("MMM D")}</time></h2>
+                    <p>${evStart.calendar()}</p>
+                    <p class="whichClass">${ev.title}</p>
+                </li>`}).join("");
+            const faq = `
+          <dl class="flow">
+            <div>
+                <dt>Is the studio booked right now?</dt>
+                <dd>${classOnNow ? "yes" : "no"}</dd>
+            </div>
+            <div>
+                ${classOnNow
+                    ? `
+                    <dt>When does the booking end?</dt>
+                    <dd>in about ${dayjs(currentClass?.end).fromNow(true)}<br><small>(${dayjs(currentClass?.end).format("H:mm a")})</small></dd>`
+                    : `
+                    <dt>When's the next booking start?</dt>
+                    <dd>in about ${dayjs(nextClass?.start).fromNow(true)}<br><small>(${nextClass.calendar()})</small>|| "No future bookings scheduled"</dd>`
+                }
+            </div>
+         </dl>`
+            document.querySelector("#faq").innerHTML = faq;
+            document.querySelector("#bookings").innerHTML = `<ol>${list}</ol>`
+        }
+        function copyText(sel, attr) {
+            const el = document.querySelector(sel)
+            const val = attr ? el.getAttribute(attr) : el.innerText;
+            const tmp = document.createElement("input");
+            tmp.type = "text";
+            tmp.value = val;
+
+            document.body.appendChild(tmp);
+
+            tmp.select();
+            document.execCommand("Copy");
+
+            document.body.removeChild(tmp);
+
+            }
+    </script>
+</body>
