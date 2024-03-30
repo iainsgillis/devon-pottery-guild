@@ -121,8 +121,7 @@
 
         if (shouldFetch) {
             console.info("updating calendar data")
-            const url = `https://clients6.google.com/calendar/v3/calendars/devonpottery@gmail.com/events?calendarId=devonpottery%40gmail.com&singleEvents=true&eventTypes=default&eventTypes=focusTime&eventTypes=outOfOffice&timeZone=America%2FEdmonton&maxAttendees=1&maxResults=250&sanitizeHtml=true&timeMin=${startDate}T00%3A00%3A00-06%3A00&timeMax=${endDate}T00%3A00%3A00-06%3A00&key=AIzaSyAwBtjzb2Gy0OC1eNBSRPVkJLMfhipHi5c`
-            fetch(url)
+            fetch("/.netlify/functions/calendar-proxy")
                 .then(r => r.json())
                 .then(j => {
                     const events = j.items.map(el => ({ title: el.summary, start: el.start.dateTime, end: el.end.dateTime }));
