@@ -141,3 +141,9 @@ footer {
         font-size: var(--size--1)
     }
 }
+
+button {
+    outline: 1px solid var(--contrast);
+    border-radius: 1px;
+    padding: 0.5ex 1ch;
+}
