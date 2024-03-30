@@ -1,6 +1,3 @@
-// netlify/functions/calendar-proxy.js
-const fetch = require("node-fetch");
-
 exports.handler = async (event, context) => {
 	const GOOGLE_CALENDAR_API_KEY = process.env.GOOGLE_CALENDAR_API_KEY;
 	const calendarId = "devonpottery@gmail.com";
