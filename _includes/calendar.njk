@@ -121,7 +121,7 @@
 
         if (shouldFetch) {
             console.info("updating calendar data")
-            fetch("/.netlify/functions/calendar-proxy")
+            fetch(`/.netlify/functions/calendar-proxy?startDate=${startDate}&endDate=${endDate}`)
                 .then(r => r.json())
                 .then(j => {
                     const events = j.items.map(el => ({ title: el.summary, start: el.start.dateTime, end: el.end.dateTime }));
