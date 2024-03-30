@@ -22,11 +22,13 @@
     {% include "partials/site_head.njk" %}
 
     <main class="flow">
-
+    {% block main %}
+    
         {% include "partials/hero.njk" %}
         {% block lede %}{% endblock %}
         {% block content %}{% endblock %}
-
+    
+    {% endblock main %}
     </main>
     
     
