@@ -60,6 +60,5 @@ export function getAddToCalendarDates(event: Event) {
     dates.push(obj)
 	}
   const out = JSON.stringify(dates)
-  console.log(out)
   return out;
 }

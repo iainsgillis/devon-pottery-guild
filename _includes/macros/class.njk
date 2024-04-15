@@ -5,7 +5,8 @@
     <h2>
         {{- class.title | replace(r/\d{4}\-\d{2}\s?/, "") | replace("()", "") + " " -}}
         {%- if (class.spots_left | int) == 0 -%}<span class="class-full">Full!</span>{%- endif -%}
-        {%- if (class.spots_left | int) == -2 -%}<span class="class-inprogress keep-together">Registration closed!</span>{%- endif -%}
+        {%- if (class.spots_left | int) == -2 -%}<span class="class-inprogress keep-together">Registration
+            closed!</span>{%- endif -%}
         {%- if (class.spots_left | int) == -1 -%}<span class="class-cancelled">Cancelled!</span>{%- endif -%}
     </h2>
     <details>
@@ -17,24 +18,24 @@
     {% set endTime = [class.end_date, class.end_time] | join(" ") %}
 
 
-<dl>
-    <div>
-        <dt>Details</dt>
-        <dd>
-{% if "/" in class.weekday %}
-    {% if "Wed" in class.weekday %}
-        {% set weeknight = "Wed" %}
-    {% elif "Thu" in class.weekday %}
-        {% set weeknight = "Thu" %}
-    {% endif %}
-<span class="keep-together">{{ weeknight }}, 6pm–9pm &<br>Sat, 9am–12pm</span>
-{% else %}
-<span class="keep-together">{{ startTime | date("EEE")}}, {{ startTime | date("haaa")}}–{{ endTime | date("haaa")}}</span>
-{% endif %}
-
-<span class="keep-together">w/ {{ class.instructor }}</span></dd>
-    </div>
-    <div class="row">
+    <dl>
+        <div>
+            <dt>Details</dt>
+            <dd>
+                {%- if "/" in class.weekday -%}
+                {%- if "Wed" in class.weekday -%}
+                {%- set weeknight = "Wed" -%}
+                {%- elif "Thu" in class.weekday -%}
+                {%- set weeknight = "Thu" -%}
+                {%- endif -%}
+                <span class="keep-together">{{ weeknight }}, 6pm–9pm &<br>Sat, 9am–12pm</span>
+                {%- else -%}
+                <span class="keep-together">{{ startTime | date("EEE")}}, {{ startTime | date("haaa")}}–{{ endTime |
+                    date("haaa")}}</span>
+                {%- endif -%}
+                <span class="keep-together">w/ {{ class.instructor }}</span>
+            </dd>
+        </div>
         <div>
             <dt>Dates</dt>
             <dd>{{ startTime | date("MMM d") }}–{{ endTime | date("MMM d") }}</dd>
@@ -45,20 +46,19 @@
             <dd>{{ class.exceptions | date("MMM d") }}</dd>
         </div>
         {%- endif -%}
-    </div>
-    <div>
-        <dt>Registration details</dt>
-        {%- set nonmember = [" / $", class.external_price, "<span class='non-member'>(non-member)</span>"] | join if class.external_price else "(members only)" -%}
-        <dd>${{ class.guild_price }} {{nonmember | safe }}<br>max. {{ class.max_participants }} participants</dd>
-        {% if class.form_url and (class.spots_left | int) != 0 %}
-        <details>
-            <summary>Show Registration Form</summary>
-            <iframe src="{{ class.form_url }}" allowfullscreen>Loading…</iframe>
-        </details>
-        {% endif %}
-    
-    </div>
-</dl>
+        <div>
+            <dt>Registration details</dt>
+            {%- set nonmember = [" / $", class.external_price, "<span class='non-member'>(non-member)</span>"] | join if
+            class.external_price else "(members only)" -%}
+            <dd>${{ class.guild_price }} {{nonmember | safe }}<br>max. {{ class.max_participants }} participants</dd>
+            {%- if class.form_url and (class.spots_left | int) != 0 -%}
+            <details>
+                <summary>Show Registration Form</summary>
+                <iframe src="{{ class.form_url }}" allowfullscreen>Loading…</iframe>
+            </details>
+            {%- endif -%}
+        </div>
+    </dl>
 </article>
 
 {% endmacro %}
