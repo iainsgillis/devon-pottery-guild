@@ -21,6 +21,7 @@ import * as filters from "./_filters.ts";
 const markdown = { options: {typographer: true}};
 const site = lume({ location: new URL("https://devonpotteryguild.com"), }, { markdown });
 
+site.ignore("README.md");
 
 site.use(nunjucks());
 site.use(date());
