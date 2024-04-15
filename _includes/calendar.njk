@@ -8,55 +8,76 @@
         h1 {
             text-align: center;
         }
+
         iframe {
             display: block;
             height: 75dvh;
             width: 100%;
             margin: auto;
         }
+
         @media screen and (prefers-color-scheme: dark) {
             iframe {
                 filter: hue-rotate(180deg) invert(0.85)
             }
         }
+
         ol {
             list-style-type: none;
         }
+
         li {
             padding-left: var(--pl, 10px);
             border-left: var(--bl, 5px) solid var(--border, var(--bg));
-       }
-       .whichClass {
+        }
+
+        .whichClass {
             font-size: var(--size--2);
-       }
-       .past {
+        }
+
+        .past {
             --border: var(--text);
             opacity: 0.75;
-       }
-       .future {
-            --border: var(--contrast);
-       }
-       .present {
-            font-weight: bold;
+        }
+
+        .future {
             --border: var(--accent);
+        }
+
+        .present {
+            font-weight: bold;
+            --border: var(--contrast);
+        }
+
+        .present::before {
+            content: " (NOW)";
+            font-variant: all-small-caps;
+        }
+
+        .today {
             --bl: 10px;
-       }
+        }
+
         #faq {
             line-height: 1.2;
             --flow-space: var(--space-xl);
+
             & dt {
                 color: var(--accent);
             }
+
             & dd {
                 font-weight: bold;
                 font-size: var(--size-3);
                 --flow-space: 200px;
             }
+
             & *::before {
                 font-size: var(--size-0);
                 font-weight: initial;
                 color: var(--accent)
             }
+
             /* & dt::before {
                 content: "Q. ";
             }
@@ -77,20 +98,27 @@
         <img src="/statics/circle-scatter-haikei.svg" class="circles" inline />
         <section class="flow">
             <h2>Partial List of Bookings</h2>
-            <p style="text-wrap: balance;"><small>This covers yesterday and the next week. See the <a href="#fullCalendar">full calendar below</a> if you need more information.</small></p>
+            <p style="text-wrap: balance;"><small>This covers yesterday and the next week. See the <a
+                        href="#fullCalendar">full calendar below</a> if you need more information.</small></p>
             <div id="bookings"></div>
         </section>
         <img src="/statics/circle-scatter-haikei.svg" class="circles" inline />
         <section class="flow">
             <h2 id="fullCalendar">Full Google Calendar</h2>
-            
+
             <iframe
                 src="https://calendar.google.com/calendar/u/0/embed?src=devonpottery@gmail.com&ctz=America/Edmonton&title=DPG%20Classes&wkst=1&showTabs=0&mode=WEEK&showCalendars=0&showPrint=0"
                 frameborder="0"></iframe>
-                <p><small><strong>Google & Gmail users</strong>: <a href="https://calendar.google.com/calendar/u/0/render?cid=devonpottery%40gmail.com">use this link</a> (or the button in the bottom-right of the embeded calendar) to subscribe using Google Calendar.</small></p>
-                <p><small><strong>Apple & iOS users</strong>: <a id="ics" href="webcal://calendar.google.com/calendar/ical/devonpottery%40gmail.com/public/basic.ics">use this link</a> to subscribe using your default calendar application.</small></p>
-                <hr style="border: 1px dashed var(--accent)">
-                <p><small>Others: <button onclick="copyText('#ics', 'href')">📋 copy ICS link to clipboard</button> and import to your application or library or choice.</small></p>
+            <p><small><strong>Google & Gmail users</strong>: <a
+                        href="https://calendar.google.com/calendar/u/0/render?cid=devonpottery%40gmail.com">use this
+                        link</a> (or the button in the bottom-right of the embeded calendar) to subscribe using Google
+                    Calendar.</small></p>
+            <p><small><strong>Apple & iOS users</strong>: <a id="ics"
+                        href="webcal://calendar.google.com/calendar/ical/devonpottery%40gmail.com/public/basic.ics">use
+                        this link</a> to subscribe using your default calendar application.</small></p>
+            <hr style="border: 1px dashed var(--accent)">
+            <p><small>Others: <button onclick="copyText('#ics', 'href')">📋 copy ICS link to clipboard</button> and
+                    import to your application or library or choice.</small></p>
         </section>
 
 
@@ -113,28 +141,18 @@
         const endDate = now.add(1, 'w').format("YYYY-MM-DD")
 
         const periodValue = `${startDate}-${endDate}`
-        let shouldFetch = false;
-        if (Object.is(localStorage.getItem("@dpg/events"), null) || Object.is(localStorage.getItem("@dpg/period"), null) || (localStorage.getItem("@dpg/period") < periodValue)) {
-            localStorage.setItem("@dpg/period", periodValue)
-            shouldFetch = true;
-        }
 
-        if (shouldFetch) {
-            console.info("updating calendar data")
-            fetch(`/.netlify/functions/calendar-proxy?startDate=${startDate}&endDate=${endDate}`)
-                .then(r => r.json())
-                .then(j => {
-                    const events = j.items.map(el => ({ title: el.summary, start: el.start.dateTime, end: el.end.dateTime }));
-                    events.sort((a, b) => a.start < b.start ? -1 : 1);
-                    localStorage.setItem("@dpg/events", JSON.stringify(events));
-                    updateDom(events)
-                })
-                .catch(err => console.error(err))
-        } else {
-            console.info("loading calendar data from localStorage")
-            const events = JSON.parse(localStorage.getItem("@dpg/events"));
-            updateDom(events);
-        }
+
+        fetch(`/.netlify/functions/calendar-proxy?startDate=${startDate}&endDate=${endDate}`)
+            .then(r => r.json())
+            .then(j => {
+                const events = j.items.map(el => ({ title: el.summary, start: el.start.dateTime, end: el.end.dateTime }));
+                events.sort((a, b) => a.start < b.start ? -1 : 1);
+                localStorage.setItem("@dpg/events", JSON.stringify(events));
+                updateDom(events)
+            })
+            .catch(err => console.error(err))
+
 
 
         function updateDom(data) {
@@ -144,10 +162,16 @@
             const studioNextAvailable = dayjs(currentClass?.end).fromNow() || now;
             const list = data.map(ev => {
                 const evStart = dayjs(ev.start)
-                const diff = evStart.diff(dayjs(), "d")
-                const cls = diff < 0 ? "past" : diff === 0 ? "present" : "future";
+                const evEnd = dayjs(ev.end)
+                const clsList = []
+                const isToday = now.format("YYYYMMDD") === evStart.format("YYYYMMDD")
+                const cls = evEnd.isBefore(now) ? "past" : now.isBetween(evStart, evEnd) ? "present" : "future";
+                clsList.push(cls)
+                if (isToday) {
+                    clsList.push("today")
+                }
                 return `
-                <li class="${cls}" style="--flow-space: 1em">
+                <li class="${clsList.join(' ')}" style="--flow-space: 1em">
                     <h2><time datetime="${ev.start}">${evStart.format("MMM D")}</time></h2>
                     <p>${evStart.calendar()}</p>
                     <p class="whichClass">${ev.title}</p>
@@ -186,6 +210,6 @@
 
             document.body.removeChild(tmp);
 
-            }
+        }
     </script>
 </body>
