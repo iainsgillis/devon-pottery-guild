@@ -37,13 +37,7 @@ There might be some kinks, and we appreciate your understanding as we try to str
 and shorten our feedback time to our members and students, without introducing new vendors and additional
 costs to the Guild.
 
-### Update: March 18, 2024
-
-🥳 Five-week beginner spring classes are confirmed 🎉 and will open to general registration this Thursday, March 21.
-
-Have a look below, and check back here on Thursday afternoon to register.
-
-<!-- Keep an eye on our [facebook](https://www.facebook.com/groups/164427301476867/) or [instagram](https://www.instagram.com/devonpottery/?hl=en) accounts to be notified when our spring registration opens, or [email the Guild at devonpottery@gmail.com](mailto:devonpottery@gmail.com) for more information. -->
+Keep an eye on our [facebook](https://www.facebook.com/groups/164427301476867/) or [instagram](https://www.instagram.com/devonpottery/?hl=en) accounts to be notified when our next round of registration opens.
 
 <div id="class-calendar">
 
