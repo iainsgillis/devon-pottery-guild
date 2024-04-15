@@ -23,6 +23,22 @@
 {% endif %}
 {% endmacro %}
 
+{% macro addToCalendar(event) %}
+{% set dates = event | addToCal %}
+<add-to-calendar-button
+name="{{event.title | safe}} - Devon Pottery Guild"
+buttonStyle="date"
+dates="{{ dates }}"
+    location="Devon Pottery Guild, 5 Jasper Ct S, Devon, AB T9G 1A2, Canada"
+    options="['Google','Apple','iCal','Microsoft365','Outlook.com','Yahoo']"
+    timeZone="Canada/Mountain"
+    trigger="click"
+    iCalFileName="dpgSpringSale2024"
+    styleLight="--font: inherit"
+    />
+{% endmacro %}
+
+
 {% macro eventCard(event, isPast=true) %}
 {% set isUpcoming = not isPast %}
 <article {% if isPast %} class="card" style="--border: tomato" {% endif %}>
@@ -30,6 +46,12 @@
     <div class="flow" style="--flow-space: 1ex">
         {%- if isUpcoming -%}
         {{ dateAndTime(event)}}
+        <hr>
+        <div>
+            <span style="font-size: var(--space-s);">Add this event to your calendar:</span>
+            {{ addToCalendar(event) }}
+        </div>
+    
         {%- else -%}
         {{ dateOnly(event) }}
         {%- endif -%}
@@ -51,12 +73,12 @@
         <p>All members are encouraged to attend the AGM.</p>
         <p>Matters discussed at general meetings shall be decided by a majority vote with each member present at the
             meeting having one vote.</p>
-            <div class="cluster" style="flex-basis: 500px; flex-shrink: 1; row-gap: var(--space-3xs)">
-                <strong>Add to calendar:</strong>
-                <div><a href="https://calndr.link/e/HR6BNYWxWJ?s=apple" target="_blank">Apple</a></div>
-                <div><a href="https://calndr.link/e/HR6BNYWxWJ?s=google" target="_blank">Google</a></div>
-                <div><a href="https://calndr.link/e/HR6BNYWxWJ?s=office365" target="_blank">Office 365</a></div>
-            </div>
+        <div class="cluster" style="flex-basis: 500px; flex-shrink: 1; row-gap: var(--space-3xs)">
+            <strong>Add to calendar:</strong>
+            <div><a href="https://calndr.link/e/HR6BNYWxWJ?s=apple" target="_blank">Apple</a></div>
+            <div><a href="https://calndr.link/e/HR6BNYWxWJ?s=google" target="_blank">Google</a></div>
+            <div><a href="https://calndr.link/e/HR6BNYWxWJ?s=office365" target="_blank">Office 365</a></div>
+        </div>
     </div>
 
     {% endif %}
