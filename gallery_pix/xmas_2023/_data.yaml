@@ -1,4 +1,4 @@
 transformImages:
-  format: webp
+  format: [webp, avif]
 
 title: Christmas Sale 2023

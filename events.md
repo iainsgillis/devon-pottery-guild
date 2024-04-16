@@ -1,7 +1,7 @@
 ---
 title: Events
 subtitle: Sales, shows, and workshops.
-hero: taylor-heery-ZSgWcW70cTs-unsplash.webp
+hero: taylor-heery-ZSgWcW70cTs-unsplash.jpg
 attribution: Photo by <a href="https://unsplash.com/@taylorheeryphoto?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Taylor Heery</a> on <a href="https://unsplash.com/photos/brown-and-gray-metal-tool-ZSgWcW70cTs?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
 layout: events.njk
 order: 20

@@ -2,7 +2,7 @@
 layout: classes.njk
 title: Classes
 subtitle: Learn with us!
-hero: earl-wilcox-iUbsw_VOkbM-unsplash.webp
+hero: earl-wilcox-iUbsw_VOkbM-unsplash.jpg
 attribution: Photo by <a href="https://unsplash.com/@earl_plannerzone?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Earl Wilcox</a> on <a href="https://unsplash.com/photos/person-making-clay-pot-on-white-round-plate-iUbsw_VOkbM?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
 aspectRatio: 640 / 427
 description: Learn the ancient art of pottery with classes for handbuilding and throwing on the wheel.

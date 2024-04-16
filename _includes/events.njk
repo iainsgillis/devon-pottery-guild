@@ -20,7 +20,7 @@
 {% set pastEvents = events | past %}
 {% import "macros/event.njk" as macros %}
 
-<section class="flow">
+<section class="flow" transform-images="avif webp jpg">
     <h2 class="h1">Upcoming</h2>
     {% if futureEvents | length %}
     <script src="https://cdn.jsdelivr.net/npm/add-to-calendar-button@2" async defer></script>

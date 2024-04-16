@@ -1,2 +1,2 @@
-transformImages:
-  format: webp
+# transformImages:
+#   format: [webp, avif]

@@ -1,5 +1,12 @@
 <div class="hero">
-    <img id="hero" class="dynamic-filter" src="/img/{{page.data.hero}}" alt="" style="--aspect: {{ page.data.aspectRatio }}">
+    <img 
+    id="hero"
+    class="dynamic-filter"
+    fetchpriority="high"
+    src="/img/{{page.data.hero}}"
+    alt=""
+    style="--aspect: {{ page.data.aspectRatio | d('16/9')}}"
+    transform-images="avif webp jpg">
     <div>
         <h1>{{ title | md(true) }}</h1>
         <p>{{ subtitle | md(true) }}</p>
