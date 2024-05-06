@@ -27,15 +27,41 @@ ceramic pieces from start to finish.
 
 <style>blockquote {font-size: smaller; padding-left: 1ch; border-left: 1ch solid var(--accent)}</style>
 
+## About our classes
+
+The Guild's pottery classes normally run for 8- or 10-week sessions, and
+normally start in September, January, and March.
+
+We strive to get registration available at least two weeks before classes begin.
+
+Classes are kept small, with an absolute maximum of 10 students; most classes
+are capped at 8. All classes require a minimum of 5 students enrolled to
+proceed.
+
+Most classes are open to the public, and most of those classes are open to
+beginners. Some additional classes and workshops are periodically made available
+exclusively to Guild members.
+
+Unless otherwise noted, you must be at least 18 years old to join a class.
+
+(Similarly, Guild membership is only available to [adults](https://kings-printer.alberta.ca/1266.cfm?page=A06.cfm&leg_type=Acts&isbncln=0779700015&display=html).)
+
+### What about kids' classes?
+
+Unfortunately, the Devon Pottery Guild doesn't normally offer kids' classes
+during the September–June season. We have run summer sessions for kids in the
+past, and may again in the future (at least one instructor has expressed
+interest in running a kids' summer pottery camp in 2024), but nothing is
+confirmed at this time.
+
 ## Registration process
 
 If a class is open to registration (whether there are spots available, or a waitlist),
 you'll find a toggle to show the registration form in the card for a corresponding class below.
 
-> Note: As of March 2024, we're trying a bit of a modification to our existing registration process.
-There might be some kinks, and we appreciate your understanding as we try to streamline our processes
-and shorten our feedback time to our members and students, without introducing new vendors and additional
-costs to the Guild.
+All registration is on a first-come, first-served basis, and is processed using
+Google Forms. Payment in full by e-transfer is required at the time of
+registration.
 
 Keep an eye on our [facebook](https://www.facebook.com/groups/164427301476867/) or [instagram](https://www.instagram.com/devonpottery/?hl=en) accounts to be notified when our next round of registration opens.
 
