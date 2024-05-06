@@ -55,6 +55,7 @@ site.filter("future", filters.getFutureEvents);
 site.filter("past", filters.getPastEvents);
 site.filter("running", filters.getRunningClasses);
 site.filter("addToCal", filters.getAddToCalendarDates);
+site.filter("sm", filters.smSuffix);
 site.use(minify_html());
 
 export default site;

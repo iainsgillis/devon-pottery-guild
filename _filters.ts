@@ -62,3 +62,8 @@ export function getAddToCalendarDates(event: Event) {
   const out = JSON.stringify(dates)
   return out;
 }
+
+export function smSuffix(imgUrl: string) {
+	const i = imgUrl.lastIndexOf('.');
+	return `${imgUrl.slice(0, i)}-sm${imgUrl.slice(i)}`;
+}
