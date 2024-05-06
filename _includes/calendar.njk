@@ -77,13 +77,20 @@
                 font-weight: initial;
                 color: var(--accent)
             }
-
-            /* & dt::before {
-                content: "Q. ";
+        }
+        #copy {
+            position: relative;
+            &::after {
+                position: absolute;
+                inset: 0;
+                transform: translateY(var(--yOffset, 0));
+                background-color: var(--accent);
+                display: var(--disp, none);
+                opacity: var(--opacity, 0);
+                content: "Copied!";
+                color: var(--bg);
+                padding: inherit;
             }
-            & dd::before {
-                content: "A. ";
-            } */
         }
     </style>
     {% include "partials/site_head.njk" %}
@@ -117,7 +124,7 @@
                         href="webcal://calendar.google.com/calendar/ical/devonpottery%40gmail.com/public/basic.ics">use
                         this link</a> to subscribe using your default calendar application.</small></p>
             <hr style="border: 1px dashed var(--accent)">
-            <p><small>Others: <button onclick="copyText('#ics', 'href')">📋 copy ICS link to clipboard</button> and
+            <p><small>Others: <button id="copy" onclick="copyText(this, '#ics', 'href')">📋 copy ICS link to clipboard</button> and
                     import to your application or library or choice.</small></p>
         </section>
 
@@ -132,84 +139,108 @@
     <script src="https://unpkg.com/dayjs@1.11.10/plugin/calendar.js"></script>
     <script src="https://unpkg.com/dayjs@1.11.10/plugin/isBetween.js"></script>
     <script>
-        dayjs.extend(window.dayjs_plugin_relativeTime);
-        dayjs.extend(window.dayjs_plugin_calendar);
-        dayjs.extend(window.dayjs_plugin_isBetween);
+        dayjs.extend(globalThis.dayjs_plugin_relativeTime);
+        dayjs.extend(globalThis.dayjs_plugin_calendar);
+        dayjs.extend(globalThis.dayjs_plugin_isBetween);
 
         const now = dayjs();
-        const startDate = now.subtract(1, 'd').format("YYYY-MM-DD")
-        const endDate = now.add(1, 'w').format("YYYY-MM-DD")
-
-        const periodValue = `${startDate}-${endDate}`
-
+        const startDate = now.subtract(1, "d").format("YYYY-MM-DD");
+        const endDate = now.add(1, "w").format("YYYY-MM-DD");
 
         fetch(`/.netlify/functions/calendar-proxy?startDate=${startDate}&endDate=${endDate}`)
-            .then(r => r.json())
-            .then(j => {
-                const events = j.items.map(el => ({ title: el.summary, start: el.start.dateTime, end: el.end.dateTime }));
-                events.sort((a, b) => a.start < b.start ? -1 : 1);
-                localStorage.setItem("@dpg/events", JSON.stringify(events));
-                updateDom(events)
+            .then((r) => r.json())
+            .then((j) => {
+                const events = j.items.map((el) => ({
+                    title: el.summary,
+                    start: el.start.dateTime,
+                    end: el.end.dateTime,
+                }));
+                events.sort((a, b) => (a.start < b.start ? -1 : 1));
+                updateDom(events);
             })
-            .catch(err => console.error(err))
-
-
+            .catch((err) => console.error(err));
 
         function updateDom(data) {
-            const classOnNow = data.some(el => now.isBetween(dayjs(el.start), dayjs(el.end)));
-            const currentClass = data.find(el => now.isBetween(dayjs(el.start), dayjs(el.end)));
-            const nextClass = data.find(el => now.isBefore(dayjs(el.start)));
-            const studioNextAvailable = dayjs(currentClass?.end).fromNow() || now;
-            const list = data.map(ev => {
-                const evStart = dayjs(ev.start)
-                const evEnd = dayjs(ev.end)
-                const clsList = []
-                const isToday = now.format("YYYYMMDD") === evStart.format("YYYYMMDD")
-                const cls = evEnd.isBefore(now) ? "past" : now.isBetween(evStart, evEnd) ? "present" : "future";
-                clsList.push(cls)
-                if (isToday) {
-                    clsList.push("today")
-                }
-                return `
-                <li class="${clsList.join(' ')}" style="--flow-space: 1em">
-                    <h2><time datetime="${ev.start}">${evStart.format("MMM D")}</time></h2>
-                    <p>${evStart.calendar()}</p>
-                    <p class="whichClass">${ev.title}</p>
-                </li>`}).join("");
+            const currentClass = data.find((el) => now.isBetween(dayjs(el.start), dayjs(el.end)));
+            const classOnNow = currentClass !== undefined;
+            const nextClass = data.find((el) => now.isBefore(dayjs(el.start)));
+            const list = data
+                .map((ev) => {
+                    const evStart = dayjs(ev.start);
+                    const evEnd = dayjs(ev.end);
+                    const clsList = [];
+                    const isToday = now.format("YYYYMMDD") === evStart.format("YYYYMMDD");
+                    const cls = evEnd.isBefore(now)
+                        ? "past"
+                        : now.isBetween(evStart, evEnd)
+                            ? "present"
+                            : "future";
+                    clsList.push(cls);
+                    if (isToday) {
+                        clsList.push("today");
+                    }
+                    return `
+        <li class="${clsList.join(" ")}" style="--flow-space: 1em">
+            <h2><time datetime="${ev.start}">${evStart.format("MMM D")}</time></h2>
+            <p>${evStart.calendar()}</p>
+            <p class="whichClass">${ev.title}</p>
+        </li>`;
+                })
+                .join("");
             const faq = `
-          <dl class="flow">
-            <div>
-                <dt>Is the studio booked right now?</dt>
-                <dd>${classOnNow ? "yes" : "no"}</dd>
-            </div>
-            <div>
-                ${classOnNow
+  <dl class="flow">
+    <div>
+        <dt>Is the studio booked right now?</dt>
+        <dd>${classOnNow ? "Yep." : "Nope."}</dd>
+    </div>
+    <div>
+        ${classOnNow
                     ? `
-                    <dt>When does the booking end?</dt>
-                    <dd>in about ${dayjs(currentClass?.end).fromNow(true)}<br><small>(${dayjs(currentClass?.end).format("H:mm a")})</small></dd>`
+            <dt>When does the booking end?</dt>
+            <dd>In about ${dayjs(currentClass?.end).fromNow(true)}.<br>
+                <small>(${dayjs(currentClass?.end).format("H:mm a")})</small></dd>`
                     : `
-                    <dt>When's the next booking start?</dt>
-                    <dd>in about ${dayjs(nextClass?.start).fromNow(true)}<br><small>(${dayjs(nextClass?.start).calendar() || "No future bookings scheduled"})</small></dd>`
+            <dt>When's the next booking start?</dt>
+            <dd>In about ${dayjs(nextClass?.start).fromNow(true)}.<br>
+                <small>(${dayjs(nextClass?.start).calendar() || "No future bookings scheduled"}.)</small></dd>`
                 }
-            </div>
-         </dl>`
+    </div>
+ </dl>`;
             document.querySelector("#faq").innerHTML = faq;
-            document.querySelector("#bookings").innerHTML = `<ol>${list}</ol>`
+            document.querySelector("#bookings").innerHTML = `<ol>${list}</ol>`;
         }
-        function copyText(sel, attr) {
-            const el = document.querySelector(sel)
-            const val = attr ? el.getAttribute(attr) : el.innerText;
-            const tmp = document.createElement("input");
-            tmp.type = "text";
-            tmp.value = val;
 
-            document.body.appendChild(tmp);
+        function copyText(target, sel, attr) {
+            console.log(target)
+            const originalText = target.innerText;
+            const el = document.querySelector(sel);
+            const val = (attr ? el.getAttribute(attr) : el.innerText) || "";
+            const tmp = Object.assign(document.createElement("input"), {
+                type: "text",
+                value: val,
+            });
+            document.body.appendChild(tmp).select();
+            navigator.clipboard.writeText(val).then(res => {
+                let opacity = 1;
+                let yOffset = 0;
+                target.style.setProperty("--disp", "block");
+                target.style.setProperty("--opacity", opacity);
+                setTimeout(() => {
+                    const fadeInterval = setInterval(() => {
+                        opacity -= 0.01;
+                        yOffset -= 0.25;
+                        target.style.setProperty("--yOffset", `${yOffset}px`);
+                        target.style.setProperty("--opacity", opacity);
+                        if (opacity <= 0) {
+                            clearInterval(fadeInterval);
+                        }
+                    }, 10);
+                }, 3000)
 
-            tmp.select();
-            document.execCommand("Copy");
-
+            }).catch(err => {
+                target.innerText = "Something went wrong..."
+            });
             document.body.removeChild(tmp);
-
         }
     </script>
 </body>
