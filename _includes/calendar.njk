@@ -211,7 +211,7 @@
         }
 
         function copyText(target, sel, attr) {
-            console.log(target)
+
             const originalText = target.innerText;
             const el = document.querySelector(sel);
             const val = (attr ? el.getAttribute(attr) : el.innerText) || "";
