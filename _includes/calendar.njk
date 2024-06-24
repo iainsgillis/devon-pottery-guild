@@ -78,8 +78,10 @@
                 color: var(--accent)
             }
         }
+
         #copy {
             position: relative;
+
             &::after {
                 position: absolute;
                 inset: 0;
@@ -145,7 +147,7 @@
 
         const now = dayjs();
         const startDate = now.subtract(1, "d").format("YYYY-MM-DD");
-        const endDate = now.add(1, "w").format("YYYY-MM-DD");
+        const endDate = now.add(3, "w").format("YYYY-MM-DD");
 
         fetch(`/.netlify/functions/calendar-proxy?startDate=${startDate}&endDate=${endDate}`)
             .then((r) => r.json())
@@ -164,48 +166,68 @@
             const currentClass = data.find((el) => now.isBetween(dayjs(el.start), dayjs(el.end)));
             const classOnNow = currentClass !== undefined;
             const nextClass = data.find((el) => now.isBefore(dayjs(el.start)));
-            const list = data
-                .map((ev) => {
-                    const evStart = dayjs(ev.start);
-                    const evEnd = dayjs(ev.end);
-                    const clsList = [];
-                    const isToday = now.format("YYYYMMDD") === evStart.format("YYYYMMDD");
-                    const cls = evEnd.isBefore(now)
-                        ? "past"
-                        : now.isBetween(evStart, evEnd)
-                            ? "present"
-                            : "future";
-                    clsList.push(cls);
-                    if (isToday) {
-                        clsList.push("today");
-                    }
-                    return `
-        <li class="${clsList.join(" ")}" style="--flow-space: 1em">
-            <h2><time datetime="${ev.start}">${evStart.format("MMM D")}</time></h2>
-            <p>${evStart.calendar()}</p>
-            <p class="whichClass">${ev.title}</p>
-        </li>`;
-                })
-                .join("");
-            const faq = `
-  <dl class="flow">
-    <div>
-        <dt>Is the studio booked right now?</dt>
-        <dd>${classOnNow ? "Yep." : "Nope."}</dd>
-    </div>
-    <div>
-        ${classOnNow
-                    ? `
-            <dt>When does the booking end?</dt>
-            <dd>In about ${dayjs(currentClass?.end).fromNow(true)}.<br>
-                <small>(${dayjs(currentClass?.end).format("H:mm a")})</small></dd>`
-                    : `
-            <dt>When's the next booking start?</dt>
-            <dd>In about ${dayjs(nextClass?.start).fromNow(true)}.<br>
-                <small>(${dayjs(nextClass?.start).calendar() || "No future bookings scheduled"}.)</small></dd>`
+            const upcomingWeek = data.filter(el => dayjs(el.start).diff(now, 'd') < 7)
+            console.log( upcomingWeek)
+            let list = "";
+            for (const ev of upcomingWeek) {
+                const evStart = dayjs(ev.start);
+                const evEnd = dayjs(ev.end);
+                const clsList = [];
+                const isToday = now.format("YYYYMMDD") === evStart.format("YYYYMMDD");
+                let cls = "";
+                if (evEnd.isBefore(now)) {
+                    cls = "past"
+                } else if (now.isBetween(evStart, evEnd)) {
+                    cls = "present"
+                } else {
+                    cls = "future";
                 }
-    </div>
- </dl>`;
+                clsList.push(cls);
+                if (isToday) {
+                    clsList.push("today");
+                }
+                const li = (
+                    `<li class="${clsList.join(" ")}" style="--flow-space: 1em">
+                        <h2><time datetime="${ev.start}">${evStart.format("MMM D")}</time></h2>
+                        <p>${evStart.calendar()}</p>
+                        <p class="whichClass">${ev.title}</p>
+                    </li>`
+                );
+                list += li;
+            }
+
+
+            const firstDiv = (
+                `<div>
+                    <dt>Is the studio booked right now?</dt>
+                    <dd>${classOnNow ? "Yep." : "Nope."}</dd>
+                </div>`
+            )
+            let secondDiv = "<div>";
+            if (classOnNow) {
+                secondDiv += (
+                    `<dt>When does the booking end?</dt>
+                    <dd>In about ${dayjs(currentClass?.end).fromNow(true)}.<br>
+                    <small>(${dayjs(currentClass?.end).format("H:mm a")})</small></dd>`
+                )
+            } else {
+                secondDiv += "<dt>When does the next booking start?</dt>";
+                if (nextClass) {
+                    secondDiv += (
+                        `<dd>In about ${dayjs(nextClass?.start).fromNow(true)}.<br>
+                        <small>(${dayjs(nextClass?.start).calendar()}.)</small></dd>`
+                    )
+                } else {
+                    secondDiv += "<dd>There's nothing booked in the next couple of weeks.</dd>"
+                }
+            }
+            secondDiv += "</div";
+            let faq = (
+                `<dl class="flow">
+                    ${firstDiv}
+                    ${secondDiv}
+                </dl>`
+            );
             document.querySelector("#faq").innerHTML = faq;
             document.querySelector("#bookings").innerHTML = `<ol>${list}</ol>`;
         }
