@@ -25,10 +25,23 @@ ceramic pieces from start to finish.
 
 <style>blockquote {font-size: smaller; padding-left: 1ch; border-left: 1ch solid var(--accent)}</style>
 
-
+<script src="https://cdn.jsdelivr.net/npm/add-to-calendar-button@2" async defer></script>
 <section class="flow">
 
-> **Update: August 30, 2024**: Fall 2024 classes are just about here! 🥳
+> **Update: September 6, 2024**: Registration for Fall 2024 classes will open on Monday, September 9, at 8:00pm! <add-to-calendar-button
+    name="2024 Fall Class Registration Opens - Devon Pottery Guild"
+    options="['Google','Apple','iCal','Microsoft365','Outlook.com','Yahoo']"
+    timeZone="Canada/Mountain"
+    trigger="click"
+    location="Online"
+    description="Registration and payment is being handled online on a first-come, first-saved basis.  Visit https://devonpotteryguild.com/classes/#registration-process, and follow the link to our Square Online page."
+    inline
+    label="Add a calendar reminder"
+    iCalFileName="DPGfallReg2024"
+    startDate="2024-09-09"
+    endDate="2024-09-09"
+    startTime="20:00"
+    endTime="20:00"></add-to-calendar-button>
 
 Further down the page, you'll find information about [our classes in general](#about-our-classes), 
 [our registration process](#registration-process), and [kids' classes](#what-about-kids-classes).
@@ -89,6 +102,9 @@ feedback about the Google Forms-based process we had in the spring, and this
 should be another step forward in modernizing user experience for most users and
 the Guild.
 
+> **On Monday, September 9, 2024 from 8:00pm, there will be a big ol' button here to
+take you to the registration page.**
+
 All registration is on a first-come, first-served basis, with full payment due
 at the time of registration.
 
@@ -107,16 +123,24 @@ We strive to get registration available at least two weeks before classes begin.
 
 Classes are kept small, with most classes capped at 8 participants.
 
-All classes require a minimum of 5 students enrolled to proceed.
+**All classes require a minimum of 5 students enrolled to proceed.[*](#refunds)**
 
 Most classes are open to the public, and most of those classes are open to
 beginners. Some additional classes and workshops are periodically made available
 exclusively to Guild members.
 
-Unless otherwise noted, you must be at least 18 years old to join a class.
+**Unless otherwise noted, you must be at least 18 years old to join a class.**
 
 (Similarly, Guild membership is only available to [adults](https://kings-printer.alberta.ca/1266.cfm?page=A06.cfm&leg_type=Acts&isbncln=0779700015&display=html).)
 
+### Refunds
+
+**There will be no refunds for class registration fees**, unless the class is
+cancelled due to low enrolment.
+
+If an Instructor cancels an individual class session (due to illness or
+emergency) the Instructor will make up for it at a time to be agreed upon in
+consultation with the class participants.
 
 ### Class location
 
