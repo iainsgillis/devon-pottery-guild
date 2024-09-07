@@ -26,10 +26,23 @@ ceramic pieces from start to finish.
 <style>blockquote {font-size: smaller; padding-left: 1ch; border-left: 1ch solid var(--accent)}</style>
 
 <script src="https://cdn.jsdelivr.net/npm/add-to-calendar-button@2" async defer></script>
+<script src="https://cdn.jsdelivr.net/npm/add-to-calendar-button@2" async defer></script>
 <section class="flow">
 
-> Keep an eye here and on our social media channels for upcoming events,
-> including our next round of registration for winter classes.
+> **Update: September 6, 2024**: Registration for Fall 2024 classes will open on Monday, September 9, at 8:00pm! <add-to-calendar-button
+    name="2024 Fall Class Registration Opens - Devon Pottery Guild"
+    options="['Google','Apple','iCal','Microsoft365','Outlook.com','Yahoo']"
+    timeZone="Canada/Mountain"
+    trigger="click"
+    location="Online"
+    description="Registration and payment is being handled online on a first-come, first-saved basis.  Visit https://devonpotteryguild.com/classes/#registration-process, and follow the link to our Square Online page."
+    inline
+    label="Add a calendar reminder"
+    iCalFileName="DPGfallReg2024"
+    startDate="2024-09-09"
+    endDate="2024-09-09"
+    startTime="20:00"
+    endTime="20:00"></add-to-calendar-button>
 
 Further down the page, you'll find information about [our classes in general](#about-our-classes), 
 [our registration process](#registration-process), and [kids' classes](#what-about-kids-classes).
@@ -88,6 +101,9 @@ Further down the page, you'll find information about [our classes in general](#a
 
 We process registrations with Square Online to better integrate our
 registration process with our financial records.
+
+> **On Monday, September 9, 2024 from 8:00pm, there will be a big ol' button here to
+take you to the registration page.**
 
 All registration is on a first-come, first-served basis, with full payment due
 at the time of registration.
