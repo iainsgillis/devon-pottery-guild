@@ -50,6 +50,9 @@ Further down the page, you'll find information about [our classes in general](#a
         position: relative;
         contain: content;
         outline: 1px dotted var(--accent);
+        & h2 {
+            color: revert;
+        };
         & ::marker {
             color: var(--spot-bg);
         }

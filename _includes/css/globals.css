@@ -33,11 +33,13 @@ h1,
 h2,
 .h2 {
     font-size: var(--size-2);
+    color: var(--accent);
 }
 
 h3,
 .h3 {
     font-size: var(--size-1);
+    color: var(--contrastColor);
 }
 
 p,
@@ -143,7 +145,7 @@ footer {
 }
 
 button {
-    outline: 1px solid var(--contrast);
+    outline: 1px solid var(--contrastColor);
     border-radius: 1px;
     padding: 0.5ex 1ch;
 }
