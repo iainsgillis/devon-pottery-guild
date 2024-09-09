@@ -28,20 +28,7 @@ ceramic pieces from start to finish.
 <script src="https://cdn.jsdelivr.net/npm/add-to-calendar-button@2" async defer></script>
 <section class="flow">
 
-> **Update: September 6, 2024**: Registration for Fall 2024 classes will open on Monday, September 9, at 8:00pm! <add-to-calendar-button
-    name="2024 Fall Class Registration Opens - Devon Pottery Guild"
-    options="['Google','Apple','iCal','Microsoft365','Outlook.com','Yahoo']"
-    timeZone="Canada/Mountain"
-    trigger="click"
-    location="Online"
-    description="Registration and payment is being handled online on a first-come, first-saved basis.  Visit https://devonpotteryguild.com/classes/#registration-process, and follow the link to our Square Online page."
-    inline
-    label="Add a calendar reminder"
-    iCalFileName="DPGfallReg2024"
-    startDate="2024-09-09"
-    endDate="2024-09-09"
-    startTime="20:00"
-    endTime="20:00"></add-to-calendar-button>
+> **Update: September 9, 2024 @ 8:00pm**: Registration for Fall 2024 classes is open!
 
 Further down the page, you'll find information about [our classes in general](#about-our-classes), 
 [our registration process](#registration-process), and [kids' classes](#what-about-kids-classes).
@@ -83,6 +70,7 @@ Further down the page, you'll find information about [our classes in general](#a
 </style>
 
 {% import "macros/class.njk" as macros %}
+{% import "macros/link.njk" as link %}
  
 {%- for item in classes | running -%}
 
@@ -102,8 +90,7 @@ feedback about the Google Forms-based process we had in the spring, and this
 should be another step forward in modernizing user experience for most users and
 the Guild.
 
-> **On Monday, September 9, 2024 from 8:00pm, there will be a big ol' button here to
-take you to the registration page.**
+{{ link.bigbuttonlink(href="https://devon-pottery-guild.square.site/shop/pottery-classes/6373XYJTRIHAR6V3VW6AC7CA", text="Take me to the registration page!") }}
 
 All registration is on a first-come, first-served basis, with full payment due
 at the time of registration.

@@ -1,0 +1,31 @@
+{% macro bigbuttonlink(href, text) %}
+<style>
+div:has(>.big-ol-button) {
+    background-color: transparent;
+    border: 1px solid var(--contrastColor);
+    padding: 1em 2em;
+    width: 100%;
+    display:block;
+    text-align: center;
+    transition: all 300ms;
+}
+div:has(>.big-ol-button):hover {
+    border: 1px solid var(--accent);
+    background-image: url("/statics/blob-scatter-haikei-1.svg");
+    background-position: center;
+    background-size: cover;
+    background-color: var(--accent);
+}
+div:has(>.big-ol-button):hover a{
+    color: var(--bg);
+    font-weight: 900;
+}
+div:has(>.big-ol-button) a {
+    padding: 1ch 1ex;
+    background-color: transparent;
+}
+</style>
+<div>
+    <a class="big-ol-button" href="{{href}}">{{text}}</a>
+</div>
+{% endmacro %}

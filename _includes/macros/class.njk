@@ -1,3 +1,4 @@
+{% import "macros/link.njk" as link %}
 {% macro classCard(class) %}
 
 
@@ -59,6 +60,9 @@
             {%- endif -%}
         </div>
     </dl>
+    <div style="margin-top: auto; font-size: small; text-transform: uppercase; padding-top: var(--space-l)">
+        <a href="{{class.square_item_url}}">See if there's space available</a>
+    </div>
 </article>
 
 {% endmacro %}
