@@ -21,4 +21,38 @@
 {% endblock %}
 
 {% block js %}
+<script type="module">
+
+    fetch(`/.netlify/functions/inventory-proxy`)
+            .then((r) => r.json())
+            .then((j) => {
+                j.forEach(updateInventory)
+                cleanUp()
+            })
+            .catch((err) => console.error(err));
+
+        function updateInventory(dict) {
+            const {site_product_id, total} = dict;
+            const card = document.querySelector(`[data-product-id="${site_product_id}"]`)
+            const link = card.querySelector("[data-inventory]")
+            if (total === 0) {
+                link.outerHTML = "Sorry: This class is fully booked!"
+            } else if (total === 1) {
+                link.innerText = `Looks like there's ${total} spot remaining!`
+            } else {
+                link.innerText = `Looks like there are ${total} spots remaining!`
+            }
+        }
+
+        function cleanUp() {
+            document.querySelectorAll("[data-inventory]").forEach(el => {
+                if (el.textContent.startsWith("See")) {
+                    el.closest(".card").querySelector("h2").innerHTML += '<span class="class-full">Full!</span>'
+                    el.outerHTML = "Sorry: This class is fully booked!"
+                }
+            })
+        }
+
+
+</script>
 {% endblock %}

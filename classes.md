@@ -44,6 +44,7 @@ Further down the page, you'll find information about [our classes in general](#a
         text-transform: uppercase;
         font-size: var(--size-0);
         padding-inline: 0.5ex;
+        margin-inline: 1ex;
         vertical-align: 25%;
     }
     .card {

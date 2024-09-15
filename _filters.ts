@@ -48,22 +48,30 @@ export function getRunningClasses(classes: Class[]) {
 }
 
 export function getAddToCalendarDates(event: Event) {
-  const dates = []
+	const dates = [];
 	for (const time of event.times) {
-    const obj = { name: "", startDate: "", startTime: "", endTime: "" };
+		const obj = { name: "", startDate: "", startTime: "", endTime: "" };
 		obj.name = event.title;
 		const [startDate, startTime] = time.start.split("T");
 		const [_, endTime] = time.end.split("T");
 		obj.startDate = startDate;
 		obj.startTime = startTime;
 		obj.endTime = endTime;
-    dates.push(obj)
+		dates.push(obj);
 	}
-  const out = JSON.stringify(dates)
-  return out;
+	const out = JSON.stringify(dates);
+	return out;
 }
 
 export function smSuffix(imgUrl: string) {
-	const i = imgUrl.lastIndexOf('.');
+	const i = imgUrl.lastIndexOf(".");
 	return `${imgUrl.slice(0, i)}-sm${imgUrl.slice(i)}`;
+}
+
+export function getProductId(itemUrl: string) {
+	if (URL.canParse(itemUrl)) {
+		const url = new URL(itemUrl);
+		return url.pathname.replace(/\/$/, "").split("/").at(-1);
+	}
+	return itemUrl.replace(/\/$/, "").split("/").at(-1);
 }

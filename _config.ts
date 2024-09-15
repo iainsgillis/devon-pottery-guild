@@ -74,6 +74,7 @@ site.filter("past", filters.getPastEvents);
 site.filter("running", filters.getRunningClasses);
 site.filter("addToCal", filters.getAddToCalendarDates);
 site.filter("sm", filters.smSuffix);
+site.filter("pid", filters.getProductId);
 site.use(minify_html());
 
 export default site;
