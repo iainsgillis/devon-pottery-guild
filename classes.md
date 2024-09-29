@@ -28,7 +28,9 @@ ceramic pieces from start to finish.
 <script src="https://cdn.jsdelivr.net/npm/add-to-calendar-button@2" async defer></script>
 <section class="flow">
 
-> **Update: September 9, 2024 @ 8:00pm**: Registration for Fall 2024 classes is open!
+> **Update: September 29, 2024 @ 2:00pm**: Fall 2024 classes are now underway;
+> registration is closed. Keep an eye here and on our social media channels for
+> upcoming events, including our next round of registration for winter classes.
 
 Further down the page, you'll find information about [our classes in general](#about-our-classes), 
 [our registration process](#registration-process), and [kids' classes](#what-about-kids-classes).
@@ -85,16 +87,14 @@ Further down the page, you'll find information about [our classes in general](#a
 
 ## Registration process
 
-We're migrating registrations to Square Online to better integrate our
-registration process with our financial records. We received really good
-feedback about the Google Forms-based process we had in the spring, and this
-should be another step forward in modernizing user experience for most users and
-the Guild.
-
-{{ link.bigbuttonlink(href="https://devon-pottery-guild.square.site/shop/pottery-classes/6373XYJTRIHAR6V3VW6AC7CA", text="Take me to the registration page!") }}
+We process registrations with Square Online to better integrate our
+registration process with our financial records.
 
 All registration is on a first-come, first-served basis, with full payment due
 at the time of registration.
+
+There are no active registrations at this time.
+{# {{ link.bigbuttonlink(href="https://devon-pottery-guild.square.site/shop/pottery-classes/6373XYJTRIHAR6V3VW6AC7CA", text="Take me to the registration page!") }} #}
 
 Keep an eye on our [facebook](https://www.facebook.com/groups/164427301476867/) or [instagram](https://www.instagram.com/devonpottery/?hl=en) accounts to be notified when our next round of registration opens.
 
