@@ -28,9 +28,8 @@ ceramic pieces from start to finish.
 <script src="https://cdn.jsdelivr.net/npm/add-to-calendar-button@2" async defer></script>
 <section class="flow">
 
-> **Update: September 29, 2024 @ 2:00pm**: Fall 2024 classes are now underway;
-> registration is closed. Keep an eye here and on our social media channels for
-> upcoming events, including our next round of registration for winter classes.
+> Keep an eye here and on our social media channels for upcoming events,
+> including our next round of registration for winter classes.
 
 Further down the page, you'll find information about [our classes in general](#about-our-classes), 
 [our registration process](#registration-process), and [kids' classes](#what-about-kids-classes).
