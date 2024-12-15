@@ -1,3 +1,6 @@
+import { existsSync } from "https://deno.land/std/fs/mod.ts";
+import { join, dirname } from "https://deno.land/std/path/mod.ts";
+
 interface Event {
 	title: string;
 	where: string;
@@ -74,4 +77,66 @@ export function getProductId(itemUrl: string) {
 		return url.pathname.replace(/\/$/, "").split("/").at(-1);
 	}
 	return itemUrl.replace(/\/$/, "").split("/").at(-1);
+}
+
+async function imageToBase64(filePath) {
+    const file = await Deno.readFile(filePath);
+    let binaryString = '';
+    
+    // Process the binary data in chunks to avoid stack overflow
+    const CHUNK_SIZE = 0x8000; // Define a chunk size (e.g., 32 KB)
+    for (let i = 0; i < file.length; i += CHUNK_SIZE) {
+        binaryString += String.fromCharCode.apply(
+            null,
+            new Uint8Array(file.subarray(i, i + CHUNK_SIZE))
+        );
+    }
+    
+    return btoa(binaryString);
+}
+
+
+export async function getCaption(imgUrl: string): Promise<string> {
+    // Extract filename without extension
+    const baseName = imgUrl.split("/").at(-1)?.split(".")[0] || "caption";
+    const txtPath = join(dirname(imgUrl), `${baseName}.txt`);
+
+    // Check if caption file already exists
+    if (existsSync(txtPath)) {
+        const caption = await Deno.readTextFile(txtPath);
+        return caption;
+    }
+
+    // If no file found, generate caption
+    const b64string = await imageToBase64(imgUrl);
+    const body = {
+        "model": "llava",
+        "prompt": `
+Generate an alt tag for this image from a Christmas Sale.
+Do not enclose the text in quotes: only return the text itself.
+Do not use phrases like "possibly" or "likely.
+Describe the Content and Function: Describe the image’s content and what it conveys in the context. Be concise but specific enough that users understand its purpose.
+Keep It Concise but Meaningful:
+Avoid Using “Image of” or “Picture of”:
+Use Detailed Descriptions for Complex Images
+Avoid Overly Technical Language
+`,
+        "stream": false,
+        "images": [b64string]
+    };
+
+    const response = await fetch("http://localhost:11434/api/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body)
+    });
+
+    const data = await response.json();
+    const rawCaption = data?.response || "";
+	const caption = rawCaption.trim().replace(/["]/g, "").trim()
+    // Persist the caption to a .txt file
+    await Deno.writeTextFile(txtPath, caption);
+    console.log(`Caption saved to ${txtPath}`);
+
+    return caption;
 }

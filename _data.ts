@@ -26,7 +26,7 @@ async function generateGalleriesData(galleryPath: string) {
 						) {
 							// @ts-ignore  dynamically assigning images
 							galleryData.images.push({
-								url: `/${galleryDirPath}/${file.name}`,
+								url: `${galleryDirPath}/${file.name}`,
 							});
 						}
 					}

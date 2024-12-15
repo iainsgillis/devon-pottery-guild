@@ -53,7 +53,7 @@ site.use(sitemap());
 site.use(source_maps());
 site.use(postcss());
 site.use(lightningCss());
-site.use(relativeUrls());
+
 
 site.use(sourceMaps());
 site.copy("statics");
@@ -68,13 +68,13 @@ site.copy("favicon", (file: string) => {
 	return adjusted_file;
 });
 site.copy("netlify");
-
+site.copyRemainingFiles();
 site.filter("future", filters.getFutureEvents);
 site.filter("past", filters.getPastEvents);
 site.filter("running", filters.getRunningClasses);
 site.filter("addToCal", filters.getAddToCalendarDates);
 site.filter("sm", filters.smSuffix);
 site.filter("pid", filters.getProductId);
-site.use(minify_html());
+site.filter("caption", filters.getCaption, true);
 
 export default site;
