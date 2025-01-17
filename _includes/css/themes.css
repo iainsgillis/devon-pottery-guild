@@ -1,43 +1,13 @@
 :root {
-    --bg: #ffffff;
-    --text: #072241;
-    --accent: #005cb9;
-    --contrastColor: #B9005C;
-    --spot-bg: #005cb9;
-    --spot-txt: #fff;
+    --bg: #f0e7da;
+    --text: #464c44;
+    --accent: #536558;
+    --contrastColor: #A75E3A;
+    --spot-bg: #536558;
+    --spot-txt: #f0e7da;
     --town-of: #005cb9;
     --devon-ab: #072241;
-    --afa-logo: #0e2954;
-    --afa-text: #b7a78c;
+    --afa-logo: #000000;
+    --afa-text: #000000;
     --insta: #262626;
-}
-
-[data-light] {
-    --bg: #ffffff;
-    --text: #072241;
-    --accent: #005cb9;
-    --spot-bg: #005cb9;
-    --spot-txt: #fff;
-}
-
-@media screen and (prefers-color-scheme: dark) {
-    :root {
-        --bg: #072241;
-        --text: #dddddd;
-        --accent: #87a121;
-        --contrastColor: #2187A1;
-        --spot-bg: #87a121;
-        --spot-txt: #072241;
-        --town-of: #9aa2a9;
-        --devon-ab: #ffffff;
-        --afa-logo: #ffffff;
-        --afa-text: #ffffff;
-        --insta: #ffffff;
-    }
-}
-
-[data-dark] {
-    --bg: #072241;
-    --text: #ffffff;
-    --accent: #7ebb00;
 }
