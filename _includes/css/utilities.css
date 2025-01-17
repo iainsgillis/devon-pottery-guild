@@ -67,6 +67,7 @@
 
 
 .lede {
+    --spot-bg: #A75e3a;
     background: var(--spot-bg);
 
     & :not(svg) {

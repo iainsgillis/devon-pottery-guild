@@ -15,10 +15,12 @@ nav {
         }
 
         &:has([aria-current="page"]) {
+            --spot-bg: #C3B37D;
             background-color: var(--spot-bg, var(--accent));
         }
-
+        
         & a[aria-current="page"] {
+            --spot-txt: #464C44;
             color: var(--spot-txt);
             text-decoration: none;
         }
