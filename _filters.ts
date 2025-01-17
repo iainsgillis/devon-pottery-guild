@@ -110,16 +110,19 @@ export async function getCaption(imgUrl: string): Promise<string> {
     // If no file found, generate caption
     const b64string = await imageToBase64(imgUrl);
     const body = {
-        "model": "llava",
+        "model": "llama3.2-vision",
         "prompt": `
-Generate an alt tag for this image from a Christmas Sale.
-Do not enclose the text in quotes: only return the text itself.
-Do not use phrases like "possibly" or "likely.
-Describe the Content and Function: Describe the image’s content and what it conveys in the context. Be concise but specific enough that users understand its purpose.
-Keep It Concise but Meaningful:
-Avoid Using “Image of” or “Picture of”:
-Use Detailed Descriptions for Complex Images
-Avoid Overly Technical Language
+- Generate an alt tag for this image for the Devon Pottery Guild.
+- Do NOT use the phrases “Image of” or “Picture of” or phrases like "The image shows..."
+- BAD: The image depicts a room filled with various items.
+- GOOD: A room filled with various items.
+- Describe what is in the image.
+- Maximum length of 150 characters.
+- Do NOT enclose the text in quotes: only return the text itself.
+- Do NOT use phrases like "possibly" or "likely".
+- Avoid adverbs.
+- Do NOT use detailed descriptions for complex images
+- Do NOT use overly technical language
 `,
         "stream": false,
         "images": [b64string]
@@ -133,7 +136,7 @@ Avoid Overly Technical Language
 
     const data = await response.json();
     const rawCaption = data?.response || "";
-	const caption = rawCaption.trim().replace(/["]/g, "").trim()
+	const caption = rawCaption.trim().replace(/["]/g, "").trim().split("\n")[0]
     // Persist the caption to a .txt file
     await Deno.writeTextFile(txtPath, caption);
     console.log(`Caption saved to ${txtPath}`);
