@@ -29,8 +29,8 @@ ceramic pieces from start to finish.
 <script src="https://cdn.jsdelivr.net/npm/add-to-calendar-button@2" async defer></script>
 <section class="flow">
 
-> **Update: September 6, 2024**: Registration for Fall 2024 classes will open on Monday, September 9, at 8:00pm! <add-to-calendar-button
-    name="2024 Fall Class Registration Opens - Devon Pottery Guild"
+> **Update: January 19, 2025**: Registration for Winter 2025 classes will open on Wednesday, January 22, at ~7:00pm! <add-to-calendar-button
+    name="2025 Winter Class Registration Opens - Devon Pottery Guild"
     options="['Google','Apple','iCal','Microsoft365','Outlook.com','Yahoo']"
     timeZone="Canada/Mountain"
     trigger="click"
@@ -38,11 +38,11 @@ ceramic pieces from start to finish.
     description="Registration and payment is being handled online on a first-come, first-saved basis.  Visit https://devonpotteryguild.com/classes/#registration-process, and follow the link to our Square Online page."
     inline
     label="Add a calendar reminder"
-    iCalFileName="DPGfallReg2024"
-    startDate="2024-09-09"
-    endDate="2024-09-09"
-    startTime="20:00"
-    endTime="20:00"></add-to-calendar-button>
+    iCalFileName="DPGwinterReg2025"
+    startDate="2025-01-22"
+    endDate="2025-01-22"
+    startTime="19:00"
+    endTime="19:00"></add-to-calendar-button>
 
 Further down the page, you'll find information about [our classes in general](#about-our-classes), 
 [our registration process](#registration-process), and [kids' classes](#what-about-kids-classes).
@@ -102,13 +102,13 @@ Further down the page, you'll find information about [our classes in general](#a
 We process registrations with Square Online to better integrate our
 registration process with our financial records.
 
-> **On Monday, September 9, 2024 from 8:00pm, there will be a big ol' button here to
+> **On Wednesday, January 22, 2025 from about 7:00pm (Mountain Time), there will be a big ol' button here to
 take you to the registration page.**
 
 All registration is on a first-come, first-served basis, with full payment due
 at the time of registration.
 
-There are no active registrations at this time.
+There are no active registrations at this time. Check back on Wednesday!
 {# {{ link.bigbuttonlink(href="https://devon-pottery-guild.square.site/shop/pottery-classes/6373XYJTRIHAR6V3VW6AC7CA", text="Take me to the registration page!") }} #}
 
 {# Keep an eye on our [facebook](https://www.facebook.com/people/Devon-Pottery-Guild/61568769758708/) or [instagram](https://www.instagram.com/devonpottery/?hl=en) accounts to be notified when our next round of registration opens. #}
