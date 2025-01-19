@@ -24,13 +24,9 @@
         <div>
             <dt>Details</dt>
             <dd>
+                {# Julie's classes are a pain. #}
                 {%- if "/" in class.weekday -%}
-                {%- if "Wed" in class.weekday -%}
-                {%- set weeknight = "Wed" -%}
-                {%- elif "Thu" in class.weekday -%}
-                {%- set weeknight = "Thu" -%}
-                {%- endif -%}
-                <span class="keep-together">{{ weeknight }}, 6pm–9pm &<br>Sat, 9am–12pm</span>
+                <span class="keep-together">Mon & Thu, 6pm–9pm</span>
                 {%- else -%}
                 <span class="keep-together">{{ startTime | date("EEE")}}, {{ startTime | date("haaa")}}–{{ endTime |
                     date("haaa")}}</span>
