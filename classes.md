@@ -102,14 +102,11 @@ Further down the page, you'll find information about [our classes in general](#a
 We process registrations with Square Online to better integrate our
 registration process with our financial records.
 
-> **On Wednesday, January 22, 2025 from about 7:00pm (Mountain Time), there will be a big ol' button here to
-take you to the registration page.**
-
 All registration is on a first-come, first-served basis, with full payment due
 at the time of registration.
 
-There are no active registrations at this time. Check back on Wednesday!
-{# {{ link.bigbuttonlink(href="https://devon-pottery-guild.square.site/shop/pottery-classes/6373XYJTRIHAR6V3VW6AC7CA", text="Take me to the registration page!") }} #}
+{{ link.bigbuttonlink(href="https://devon-pottery-guild.square.site/shop/pottery-classes/6373XYJTRIHAR6V3VW6AC7CA", text="Take me to the registration page!") }}
+
 
 {# Keep an eye on our [facebook](https://www.facebook.com/people/Devon-Pottery-Guild/61568769758708/) or [instagram](https://www.instagram.com/devonpottery/?hl=en) accounts to be notified when our next round of registration opens. #}
 
