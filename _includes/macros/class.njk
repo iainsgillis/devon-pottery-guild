@@ -57,13 +57,13 @@
             {%- endif -%}
         </div>
     </dl>
-    {# <div style="margin-top: auto; font-size: small; text-transform: uppercase; padding-top: var(--space-l)">
+    <div style="margin-top: auto; font-size: small; text-transform: uppercase; padding-top: var(--space-l)">
         {%- if (class.spots_left | int) == 0 -%}
         <span>Sorry: this class is fully booked!</span>
         {% else %}
         <a href="{{class.square_item_url}}" data-inventory>See if there's space available</a>
         {% endif %}
-    </div> #}
+    </div>
 </article>
 
 {% endmacro %}
