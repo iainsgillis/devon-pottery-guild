@@ -107,8 +107,11 @@ at the time of registration.
 
 {{ link.bigbuttonlink(href="https://devon-pottery-guild.square.site/shop/pottery-classes/6373XYJTRIHAR6V3VW6AC7CA", text="Take me to the registration page!") }}
 
+{# 
+There are no active registrations at this time. 
 
-{# Keep an eye on our [facebook](https://www.facebook.com/people/Devon-Pottery-Guild/61568769758708/) or [instagram](https://www.instagram.com/devonpottery/?hl=en) accounts to be notified when our next round of registration opens. #}
+Keep an eye on our [facebook](https://www.facebook.com/people/Devon-Pottery-Guild/61568769758708/) or [instagram](https://www.instagram.com/devonpottery/?hl=en) accounts to be notified when our next round of registration opens.
+#}
 
 </section>
 
