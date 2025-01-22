@@ -24,12 +24,12 @@ Parts of the codebase could definitely use some tweaking. I was learning Lume fr
 
 ## Design
 
-Not the greatest, probably, but it's consistent and not bad by any stretch. The
-colours are derived from the logo of the Town of Devon, as a bit of a nod to the
-Guild's home and the majority of its members. The Town of Devon is one of the
-Guild's most important financial contributors, too.
+Not the greatest, probably, but it's consistent and not bad by any stretch.
 
-This hommage is not to be construed as an endorsement by the Town of Devon.
+The logo as of January 2025 was designed by
+[Mahala Ciarroni](https://www.kindlyseebelow.com/mahala).
+It was selected as the winning entry of a logo design contest by the Devon Pottery Guild in autumn 2024.
+The colour scheme is derived from colours in the logo. Dark mode is no longer supported.
 
 The font chosen is [Work Sans](https://weiweihuanghuang.github.io/Work-Sans/).
 It's designed by Wei Huang, and published under the [Open Font License](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&d=OFL).
