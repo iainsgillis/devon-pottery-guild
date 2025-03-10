@@ -47,7 +47,13 @@ ceramic pieces from start to finish.
 Further down the page, you'll find information about [our classes in general](#about-our-classes), 
 [our registration process](#registration-process), and [kids' classes](#what-about-kids-classes).
 
-## Upcoming classes
+## Current classes
+
+Winter 2025 classes are in session, and registration is currently closed.
+Current classes are included here as a reference for those interested in future
+classes to see what representative class descriptions look like. 
+
+Watch this space and our social media channels for updates about future registrations.
 
 <div id="class-calendar">
 
@@ -105,13 +111,13 @@ registration process with our financial records.
 All registration is on a first-come, first-served basis, with full payment due
 at the time of registration.
 
-{{ link.bigbuttonlink(href="https://devon-pottery-guild.square.site/shop/pottery-classes/6373XYJTRIHAR6V3VW6AC7CA", text="Take me to the registration page!") }}
+{# {{ link.bigbuttonlink(href="https://devon-pottery-guild.square.site/shop/pottery-classes/6373XYJTRIHAR6V3VW6AC7CA", text="Take me to the registration page!") }} #}
 
-{# 
+
 There are no active registrations at this time. 
 
 Keep an eye on our [facebook](https://www.facebook.com/people/Devon-Pottery-Guild/61568769758708/) or [instagram](https://www.instagram.com/devonpottery/?hl=en) accounts to be notified when our next round of registration opens.
-#}
+
 
 </section>
 
