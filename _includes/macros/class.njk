@@ -3,13 +3,13 @@
 
 
 
-<article class="card" data-product-id="{{class.square_item_url | pid}}">
+<article class="card">
     <h2>
         {{- class.title | replace(r/\d{4}\-\d{2}\s?/, "") | replace("()", "") + " " -}}
         {%- if (class.spots_left | int) == 0 -%}<span class="class-full">Full!</span>{%- endif -%}
-        {%- if (class.spots_left | int) == -2 -%}<span class="class-inprogress keep-together">Registration
-            closed!</span>{%- endif -%}
+        {%- if (class.spots_left | int) == -2 -%}<span class="class-inprogress keep-together">Registration closed!</span>{%- endif -%}
         {%- if (class.spots_left | int) == -1 -%}<span class="class-cancelled">Cancelled!</span>{%- endif -%}
+        {%- if (class.spots_left | int) == -3 -%}<span class="class-soon keep-together">Registration opening soon!</span>{%- endif -%}
     </h2>
     <details>
         <summary>class description</summary>
@@ -57,13 +57,6 @@
             {%- endif -%}
         </div>
     </dl>
-    <div style="margin-top: auto; font-size: small; text-transform: uppercase; padding-top: var(--space-l)">
-        {%- if (class.spots_left | int) == 0 -%}
-        <span>Sorry: this class is fully booked!</span>
-        {% else %}
-        <a href="{{class.square_item_url}}" data-inventory>See if there's space available</a>
-        {% endif %}
-    </div>
 </article>
 
 {% endmacro %}

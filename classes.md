@@ -25,99 +25,26 @@ ceramic pieces from start to finish.
 
 <style>blockquote {font-size: smaller; padding-left: 1ch; border-left: 1ch solid var(--accent)}</style>
 
-<script src="https://cdn.jsdelivr.net/npm/add-to-calendar-button@2" async defer></script>
-<script src="https://cdn.jsdelivr.net/npm/add-to-calendar-button@2" async defer></script>
 <section class="flow">
 
-{# > **Update: January 19, 2025**: Registration for Winter 2025 classes will open on Wednesday, January 22, at ~7:00pm! <add-to-calendar-button
-    name="2025 Winter Class Registration Opens - Devon Pottery Guild"
-    options="['Google','Apple','iCal','Microsoft365','Outlook.com','Yahoo']"
-    timeZone="Canada/Mountain"
-    trigger="click"
-    location="Online"
-    description="Registration and payment is being handled online on a first-come, first-saved basis.  Visit https://devonpotteryguild.com/classes/#registration-process, and follow the link to our Square Online page."
-    inline
-    label="Add a calendar reminder"
-    iCalFileName="DPGwinterReg2025"
-    startDate="2025-01-22"
-    endDate="2025-01-22"
-    startTime="19:00"
-    endTime="19:00"></add-to-calendar-button> #}
 
 Further down the page, you'll find information about [our classes in general](#about-our-classes), 
 [our registration process](#registration-process), and [kids' classes](#what-about-kids-classes).
 
 ## Current classes
 
-Winter 2025 classes are in session, and registration is currently closed.
-Current classes are included here as a reference for those interested in future
-classes to see what representative class descriptions look like. 
+> Spring classes are now open for registration;  
+> classes will begin the week of April 20.
 
-Watch this space and our social media channels for updates about future registrations.
-
-<div id="class-calendar">
-
-<style>
-    .class-full, .class-cancelled, .class-inprogress {
-        background-color: var(--accent);
-        color: var(--bg);
-        text-transform: uppercase;
-        font-size: var(--size-0);
-        padding-inline: 0.5ex;
-        margin-inline: 1ex;
-        vertical-align: 25%;
-    }
-    .card {
-        position: relative;
-        contain: content;
-        outline: 1px dotted var(--accent);
-        & h2 {
-            color: revert;
-        };
-        & ::marker {
-            color: var(--spot-bg);
-        }
-    }
-    .card:has(.class-cancelled) {
-        display: none;
-    }
-    iframe {
-        width: 100%;
-        min-height: 500px;
-    }
-    details {
-        cursor: pointer;
-    }
-</style>
-
-{% import "macros/class.njk" as macros %}
 {% import "macros/link.njk" as link %}
- 
-{%- for item in classes | running -%}
 
-{{ macros.classCard(item) }}
-{%- endfor -%}
-</div>
+{{ link.bigbuttonlink(href="https://devonpottery.myshopify.com/pages/classes", text="Take me to the registration page!") }}
 
-</section>
-
-<section class="flow">
-
-## Registration process
-
-We process registrations with Square Online to better integrate our
+We process registrations with Shopify to better integrate our
 registration process with our financial records.
 
 All registration is on a first-come, first-served basis, with full payment due
 at the time of registration.
-
-{# {{ link.bigbuttonlink(href="https://devon-pottery-guild.square.site/shop/pottery-classes/6373XYJTRIHAR6V3VW6AC7CA", text="Take me to the registration page!") }} #}
-
-
-There are no active registrations at this time. 
-
-Keep an eye on our [facebook](https://www.facebook.com/people/Devon-Pottery-Guild/61568769758708/) or [instagram](https://www.instagram.com/devonpottery/?hl=en) accounts to be notified when our next round of registration opens.
-
 
 </section>
 
@@ -126,7 +53,7 @@ Keep an eye on our [facebook](https://www.facebook.com/people/Devon-Pottery-Guil
 ## About our classes
 
 The Guild's pottery classes normally run as 10-week sessions, and normally start
-in September, January, and March.
+in September, January, and March (ish). Spring sessions are often shorter.
 
 We strive to get registration available at least two weeks before classes begin.
 

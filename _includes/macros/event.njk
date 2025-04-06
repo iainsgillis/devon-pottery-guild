@@ -29,7 +29,7 @@
 name="{{event.title | safe}} - Devon Pottery Guild"
 buttonStyle="date"
 dates="{{ dates }}"
-    location="Devon Pottery Guild, 5 Jasper Ct S, Devon, AB T9G 1A2, Canada"
+    location="{{ event.where }}"
     options="['Google','Apple','iCal','Microsoft365','Outlook.com','Yahoo']"
     timeZone="Canada/Mountain"
     trigger="click"
@@ -44,7 +44,7 @@ dates="{{ dates }}"
 <article {% if isPast %} class="card" style="--border: tomato" {% endif %}>
     <h3 class="h2">{{ event.title }}</h3>
     <div class="flow" style="--flow-space: 1ex">
-        {%- if isUpcoming -%}
+        {%- if isUpcoming and -%}
         {{ dateAndTime(event)}}
         <hr>
         <div>

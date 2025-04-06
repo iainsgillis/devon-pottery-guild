@@ -102,173 +102,21 @@
         </header>
         <section class="flow">
             <h2 style="color: var(--contrastColor)">Notice</h2>
-            <div id="notice"><p>
-                This calendar is known to be out of date. The board has been notified, and is working on a solution.
-            </p></div>
+            <div id="notice">
+                <p>
+                    Heads up: the calendar URL has changed. If you subscribed sometime in the last year, you should
+                    probably unsubscribe to that, and subscribe anew to the calendar included below.
+                </p>
+            </div>
         </section>
         <section class="flow">
-            <h2>FAQ</h2>
-            <div id="faq"></div>
-        </section>
-        <img src="/statics/circle-scatter-haikei.svg" class="circles" inline />
-        <section class="flow">
-            <h2>Partial List of Bookings</h2>
-            <p style="text-wrap: balance;"><small>This covers yesterday and the next week. See the <a
-                        href="#fullCalendar">full calendar below</a> if you need more information.</small></p>
-            <div id="bookings"></div>
-        </section>
-        <img src="/statics/circle-scatter-haikei.svg" class="circles" inline />
-        <section class="flow">
-            <h2 id="fullCalendar">Full Google Calendar</h2>
+            <h2 id="fullCalendar">Public Devon Pottery Guild Calendar</h2>
 
-            <iframe
-                src="https://calendar.google.com/calendar/u/0/embed?src=devonpottery@gmail.com&ctz=America/Edmonton&title=DPG%20Classes&wkst=1&showTabs=0&mode=WEEK&showCalendars=0&showPrint=0"
-                frameborder="0"></iframe>
-            <p><small><strong>Google & Gmail users</strong>: <a
-                        href="https://calendar.google.com/calendar/u/0/render?cid=devonpottery%40gmail.com">use this
-                        link</a> (or the button in the bottom-right of the embeded calendar) to subscribe using Google
-                    Calendar.</small></p>
-            <p><small><strong>Apple & iOS users</strong>: <a id="ics"
-                        href="webcal://calendar.google.com/calendar/ical/devonpottery%40gmail.com/public/basic.ics">use
-                        this link</a> to subscribe using your default calendar application.</small></p>
-            <hr style="border: 1px dashed var(--accent)">
-            <p><small>Others: <button id="copy" onclick="copyText(this, '#ics', 'href')">📋 copy ICS link to clipboard</button> and
-                    import to your application or library or choice.</small></p>
-        </section>
-
-
+            <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FEdmonton&showPrint=0&mode=AGENDA&src=ZDQ5MmUzMzYwNGU1ZTFhNzg2YjlhMWZmYjZiOGQ2MDhmNGQwMDkyYWRlZTliYTA3ZTViZjQ2YTY4MDE1NzA0MEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%237CB342&bgcolor=%23f0e7da"  frameborder="0" scrolling="no"></iframe>
+           </section>
 
         <footer class="switcher">
             {% include "partials/site_foot.njk" %}
         </footer>
     </main>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.10/dayjs.min.js" integrity="sha512-FwNWaxyfy2XlEINoSnZh1JQ5TRRtGow0D6XcmAWmYCRgvqOUTnzCxPc9uF35u5ZEpirk1uhlPVA19tflhvnW1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.10/plugin/relativeTime.min.js" integrity="sha512-MVzDPmm7QZ8PhEiqJXKz/zw2HJuv61waxb8XXuZMMs9b+an3LoqOqhOEt5Nq3LY1e4Ipbbd/e+AWgERdHlVgaA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.10/plugin/calendar.min.js" integrity="sha512-iGrW6JrYT5DGfpMKEQwVVmB4ZT4zVcw62Y/Ax6U3tSAei9FkgZVz0zDPwmaSQemQEXtYn4FHBVIDxXGuTXiCsw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.10/plugin/isBetween.min.js" integrity="sha512-4O7lZ6x+QKo/JjmkakvxxSbfE24FnUbwNTz5b6KqBCgn7zF9Rwcse2V8B/F+iOLXfFOpfvt7jng5WzMqZD/MYA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-        dayjs.extend(globalThis.dayjs_plugin_relativeTime);
-        dayjs.extend(globalThis.dayjs_plugin_calendar);
-        dayjs.extend(globalThis.dayjs_plugin_isBetween);
-
-        const now = dayjs();
-        const startDate = now.subtract(1, "d").format("YYYY-MM-DD");
-        const endDate = now.add(3, "w").format("YYYY-MM-DD");
-
-        fetch(`/.netlify/functions/calendar-proxy?startDate=${startDate}&endDate=${endDate}`)
-            .then((r) => r.json())
-            .then((j) => {
-                const events = j.items.map((el) => ({
-                    title: el.summary,
-                    start: el.start.dateTime,
-                    end: el.end.dateTime,
-                }));
-                events.sort((a, b) => (a.start < b.start ? -1 : 1));
-                updateDom(events);
-            })
-            .catch((err) => console.error(err));
-
-        function updateDom(data) {
-            const currentClass = data.find((el) => now.isBetween(dayjs(el.start), dayjs(el.end)));
-            const classOnNow = currentClass !== undefined;
-            const nextClass = data.find((el) => now.isBefore(dayjs(el.start)));
-            const upcomingWeek = data.filter(el => dayjs(el.start).diff(now, 'd') < 7)
-            console.log( upcomingWeek)
-            let list = "";
-            for (const ev of upcomingWeek) {
-                const evStart = dayjs(ev.start);
-                const evEnd = dayjs(ev.end);
-                const clsList = [];
-                const isToday = now.format("YYYYMMDD") === evStart.format("YYYYMMDD");
-                let cls = "";
-                if (evEnd.isBefore(now)) {
-                    cls = "past"
-                } else if (now.isBetween(evStart, evEnd)) {
-                    cls = "present"
-                } else {
-                    cls = "future";
-                }
-                clsList.push(cls);
-                if (isToday) {
-                    clsList.push("today");
-                }
-                const li = (
-                    `<li class="${clsList.join(" ")}" style="--flow-space: 1em">
-                        <h2><time datetime="${ev.start}">${evStart.format("MMM D")}</time></h2>
-                        <p>${evStart.calendar()}</p>
-                        <p class="whichClass">${ev.title}</p>
-                    </li>`
-                );
-                list += li;
-            }
-
-
-            const firstDiv = (
-                `<div>
-                    <dt>Is the studio booked right now?</dt>
-                    <dd>${classOnNow ? "Yep." : "Nope."}</dd>
-                </div>`
-            )
-            let secondDiv = "<div>";
-            if (classOnNow) {
-                secondDiv += (
-                    `<dt>When does the booking end?</dt>
-                    <dd>In about ${dayjs(currentClass?.end).fromNow(true)}.<br>
-                    <small>(${dayjs(currentClass?.end).format("H:mm a")})</small></dd>`
-                )
-            } else {
-                secondDiv += "<dt>When does the next booking start?</dt>";
-                if (nextClass) {
-                    secondDiv += (
-                        `<dd>In about ${dayjs(nextClass?.start).fromNow(true)}.<br>
-                        <small>(${dayjs(nextClass?.start).calendar()}.)</small></dd>`
-                    )
-                } else {
-                    secondDiv += "<dd>There's nothing booked in the next couple of weeks.</dd>"
-                }
-            }
-            secondDiv += "</div";
-            let faq = (
-                `<dl class="flow">
-                    ${firstDiv}
-                    ${secondDiv}
-                </dl>`
-            );
-            document.querySelector("#faq").innerHTML = faq;
-            document.querySelector("#bookings").innerHTML = `<ol>${list}</ol>`;
-        }
-
-        function copyText(target, sel, attr) {
-
-            const originalText = target.innerText;
-            const el = document.querySelector(sel);
-            const val = (attr ? el.getAttribute(attr) : el.innerText) || "";
-            const tmp = Object.assign(document.createElement("input"), {
-                type: "text",
-                value: val,
-            });
-            document.body.appendChild(tmp).select();
-            navigator.clipboard.writeText(val).then(res => {
-                let opacity = 1;
-                let yOffset = 0;
-                target.style.setProperty("--disp", "block");
-                target.style.setProperty("--opacity", opacity);
-                setTimeout(() => {
-                    const fadeInterval = setInterval(() => {
-                        opacity -= 0.01;
-                        yOffset -= 0.25;
-                        target.style.setProperty("--yOffset", `${yOffset}px`);
-                        target.style.setProperty("--opacity", opacity);
-                        if (opacity <= 0) {
-                            clearInterval(fadeInterval);
-                        }
-                    }, 10);
-                }, 3000)
-
-            }).catch(err => {
-                target.innerText = "Something went wrong..."
-            });
-            document.body.removeChild(tmp);
-        }
-    </script>
 </body>
