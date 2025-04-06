@@ -44,7 +44,7 @@ dates="{{ dates }}"
 <article {% if isPast %} class="card" style="--border: tomato" {% endif %}>
     <h3 class="h2">{{ event.title }}</h3>
     <div class="flow" style="--flow-space: 1ex">
-        {%- if isUpcoming and -%}
+        {%- if isUpcoming -%}
         {{ dateAndTime(event)}}
         <hr>
         <div>

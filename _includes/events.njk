@@ -46,7 +46,6 @@
     <h2 class="h1">Past</h2>
     <div id="class-calendar">
         {% for event in pastEvents %}
-        {# {{macros.eventCard(event)}} #}
         <div>
             <h3>{{event.title}}</h3>
             {{ macros.dateOnly(event) }}
