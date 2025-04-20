@@ -24,11 +24,11 @@
 {% endmacro %}
 
 {% macro addToCalendar(event) %}
-{% set dates = event | addToCal %}
-<add-to-calendar-button
-name="{{event.title | safe}} - Devon Pottery Guild"
-buttonStyle="date"
-dates="{{ dates }}"
+    {% set dates = event | addToCal %}
+    <add-to-calendar-button
+    name="{{event.title | safe}} - Devon Pottery Guild"
+    buttonStyle="date"
+    dates="{{ dates }}"
     location="{{ event.where }}"
     options="['Google','Apple','iCal','Microsoft365','Outlook.com','Yahoo']"
     timeZone="Canada/Mountain"
@@ -41,8 +41,13 @@ dates="{{ dates }}"
 
 {% macro eventCard(event, isPast=true) %}
 {% set isUpcoming = not isPast %}
-<article {% if isPast %} class="card" style="--border: tomato" {% endif %}>
+<article {% if isPast %} class="card" style="--border: tomato" {% endif %}{% if event.cancelled %} class="card cancelled"{% endif %}>
     <h3 class="h2">{{ event.title }}</h3>
+    {% if event.cancelled %}
+    <div class="flow" style="--flow-space: 1ex">
+        {{ event.cancelled | md | safe }}
+    </div>    
+    {% else %}
     <div class="flow" style="--flow-space: 1ex">
         {%- if isUpcoming -%}
         {{ dateAndTime(event)}}
@@ -56,6 +61,7 @@ dates="{{ dates }}"
         {{ dateOnly(event) }}
         {%- endif -%}
     </div>
+    {% endif %}
     {% if isUpcoming and event.poster is defined %}
     <img src="/img/{{ event.poster }}" alt="">
     {% endif %}
