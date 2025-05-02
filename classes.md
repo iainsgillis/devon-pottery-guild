@@ -23,10 +23,7 @@ ceramic pieces from start to finish.
 </div>
 {% endblock %}
 
-<style>blockquote {font-size: smaller; padding-left: 1ch; border-left: 1ch solid var(--accent)}</style>
-
 <section class="flow">
-
 
 Further down the page, you'll find information about [our classes in general](#about-our-classes), 
 [our registration process](#registration-process), and [kids' classes](#what-about-kids-classes).
@@ -38,7 +35,7 @@ Further down the page, you'll find information about [our classes in general](#a
 ## About our classes
 
 The Guild's pottery classes normally run as 10-week sessions, and normally start
-in September, January, and March (ish). Spring sessions are often shorter.
+in September, January, and April (ish). Spring sessions are often shorter.
 
 We strive to get registration available at least two weeks before classes begin.
 
@@ -94,7 +91,7 @@ at the time of registration.
 
 Unfortunately, the Devon Pottery Guild doesn't normally offer kids' classes
 during the September–June season. We have run summer sessions for kids in the
-past, and have this on our roadmap for serious consider in 2025, but nothing is
+past, and have this on our roadmap for consideration in 2025, but nothing is
 confirmed at this time.
 
 </section>
