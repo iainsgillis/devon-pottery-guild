@@ -31,21 +31,6 @@ ceramic pieces from start to finish.
 Further down the page, you'll find information about [our classes in general](#about-our-classes), 
 [our registration process](#registration-process), and [kids' classes](#what-about-kids-classes).
 
-## Current classes
-
-> Spring classes are now open for registration;  
-> classes will begin the week of April 20.
-
-{% import "macros/link.njk" as link %}
-
-{{ link.bigbuttonlink(href="https://devonpottery.myshopify.com/pages/classes", text="Take me to the registration page!") }}
-
-We process registrations with Shopify to better integrate our
-registration process with our financial records.
-
-All registration is on a first-come, first-served basis, with full payment due
-at the time of registration.
-
 </section>
 
 <section class="flow">
@@ -94,6 +79,16 @@ All classes are held downstairs at the site of Devon's first school, just east o
         <iframe title="Google Maps" width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=5%20Jasper%20Ct%20S,%20Devon,%20AB,%20T9G%201A2+(Devon%20Pottery%20Guild)&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
     </div>
 </div>
+
+### The registration process
+
+We process registrations with Shopify to better integrate our
+registration process with our financial records.
+
+{% include "partials/moving-to-shopify.banner.njk" %}
+
+All registration is on a first-come, first-served basis, with full payment due
+at the time of registration.
 
 ### What about kids classes?
 
