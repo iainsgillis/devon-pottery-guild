@@ -1,15 +1,14 @@
-- title: 2025 Spring Sale
-  where: "20 Haven Ave, Devon, AB  T9G 2B9, Canada"
-  cancelled: |
-    This was not an easy decision, but **we have decided to cancel the Spring Sale** this year.
-    See you all at the Christmas sale for an extraordinary showcase of the outputs of our
-    members' energies and creative abilities.
-  # poster: Black and Green Illustrative Spring Flower Market Poster.png
+- title: 2025 General Meeting
+  where: 5 Jasper Court South, Devon, AB
   times:
-  - start: 2025-05-02T17:00
-    end: 2025-05-02T21:00
-  - start: 2025-05-03T10:00
-    end: 2025-05-03T15:00
+  - start: 2025-06-01T18:00
+    end: 2025-06-01T20:00
+
+- title: 2025 Annual General Meeting
+  where: 5 Jasper Court South, Devon, AB
+  times:
+  - start: 2025-01-13T19:30
+    end: 2025-01-13T21:30
 
 - title: 2024 Christmas Sale
   where: 5 Jasper Court South, Devon, AB
